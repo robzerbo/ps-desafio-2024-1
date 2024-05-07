@@ -1,0 +1,247 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background-50: #F4F7FA;
+        --background-100: #EAEFF4;
+        --background-200: #D4DFE9;
+        --background-300: #B6CADA;
+        --background-400: #94AEC6;
+        --background-500: #7A95B7;
+        --background-600: #6781A9;
+        --background-700: #5C7099;
+        --background-800: #4F5D7E;
+        --background-900: #424E66;
+        --background-950: #2B3240;
+
+        --foreground-50: #F4F7FA;
+        --foreground-100: #EAEFF4;
+        --foreground-200: #D4DFE9;
+        --foreground-300: #B6CADA;
+        --foreground-400: #94AEC6;
+        --foreground-500: #7A95B7;
+        --foreground-600: #6781A9;
+        --foreground-700: #5C7099;
+        --foreground-800: #4F5D7E;
+        --foreground-900: #424E66;
+        --foreground-950: #2B3240;
+
+        --muted-50: #F4F7FA;
+        --muted-100: #EAEFF4;
+        --muted-200: #D4DFE9;
+        --muted-300: #B6CADA;
+        --muted-400: #94AEC6;
+        --muted-500: #7A95B7;
+        --muted-600: #6781A9;
+        --muted-700: #5C7099;
+        --muted-800: #4F5D7E;
+        --muted-900: #424E66;
+        --muted-950: #2B3240;
+
+        --muted-foreground-50: #F4F7FA;
+        --muted-foreground-100: #EAEFF4;
+        --muted-foreground-200: #D4DFE9;
+        --muted-foreground-300: #B6CADA;
+        --muted-foreground-400: #94AEC6;
+        --muted-foreground-500: #7A95B7;
+        --muted-foreground-600: #6781A9;
+        --muted-foreground-700: #5C7099;
+        --muted-foreground-800: #4F5D7E;
+        --muted-foreground-900: #424E66;
+        --muted-foreground-950: #2B3240;
+
+        --popover-50: #F4F7FA;
+        --popover-100: #E7EDF2;
+        --popover-200: #D4DEE9;
+        --popover-300: #B7C9D9;
+        --popover-400: #94ADC6;
+        --popover-500: #7A95B7;
+        --popover-600: #6880A8;
+        --popover-700: #5C7099;
+        --popover-800: #4F5D7E;
+        --popover-900: #424E66;
+        --popover-950: #2C313F;
+
+        --popover-foreground-50: #F4F7FA;
+        --popover-foreground-100: #E7EDF2;
+        --popover-foreground-200: #D4DEE9;
+        --popover-foreground-300: #B7C9D9;
+        --popover-foreground-400: #94ADC6;
+        --popover-foreground-500: #7A95B7;
+        --popover-foreground-600: #6880A8;
+        --popover-foreground-700: #5C7099;
+        --popover-foreground-800: #4F5D7E;
+        --popover-foreground-900: #424E66;
+        --popover-foreground-950: #2C313F;
+
+        --border-50: #F5F6F6;
+        --border-100: #EEF0F0;
+        --border-200: #DADDDD;
+        --border-300: #B9C0BF;
+        --border-400: #939D9C;
+        --border-500: #768180;
+        --border-600: #5F6A6A;
+        --border-700: #4E5656;
+        --border-800: #434949;
+        --border-900: #3A4040;
+        --border-950: #272A2A;
+
+        --input-50: #F5F6F6;
+        --input-100: #E5E8E7;
+        --input-200: #CED3D2;
+        --input-300: #ACB4B3;
+        --input-400: #828E8D;
+        --input-500: #677372;
+        --input-600: #586262;
+        --input-700: #4E5656;
+        --input-800: #424748;
+        --input-900: #3A3F3F;
+        --input-950: #242828;
+
+        --card-50: #F4F7FA;
+        --card-100: #EAEFF4;
+        --card-200: #D4DFE9;
+        --card-300: #B6CADA;
+        --card-400: #94AEC6;
+        --card-500: #7A95B7;
+        --card-600: #6781A9;
+        --card-700: #5C7099;
+        --card-800: #4F5D7E;
+        --card-900: #424E66;
+        --card-950: #2B3240;
+
+        --card-foreground-50: #F4F8FA;
+        --card-foreground-100: #E7EDF2;
+        --card-foreground-200: #D4DFE9;
+        --card-foreground-300: #B6CADA;
+        --card-foreground-400: #93AEC7;
+        --card-foreground-500: #7996B8;
+        --card-foreground-600: #6681AA;
+        --card-foreground-700: #5B709A;
+        --card-foreground-800: #4E5D7F;
+        --card-foreground-900: #424E66;
+        --card-foreground-950: #2B3240;
+
+        --primary-50: #F2F8FD;
+        --primary-100: #E3EFFB;
+        --primary-200: #C1DFF6;
+        --primary-300: #8AC5EF;
+        --primary-400: #4CA7E4;
+        --primary-500: #3498DB;
+        --primary-600: #176FB2;
+        --primary-700: #145990;
+        --primary-800: #144C78;
+        --primary-900: #164064;
+        --primary-950: #0F2942;
+
+        --primary-foreground-50: #F2F8FD;
+        --primary-foreground-100: #E3EFFB;
+        --primary-foreground-200: #C1DFF6;
+        --primary-foreground-300: #8AC5EF;
+        --primary-foreground-400: #4CA7E4;
+        --primary-foreground-500: #3498DB;
+        --primary-foreground-600: #176FB2;
+        --primary-foreground-700: #145990;
+        --primary-foreground-800: #144C78;
+        --primary-foreground-900: #164064;
+        --primary-foreground-950: #0F2942;
+
+        --secondary-50: #F5F6F6;
+        --secondary-100: #E5E8E7;
+        --secondary-200: #CED3D2;
+        --secondary-300: #ABB5B4;
+        --secondary-400: #818F8E;
+        --secondary-500: #667473;
+        --secondary-600: #586262;
+        --secondary-700: #515A5A;
+        --secondary-800: #424848;
+        --secondary-900: #3A3F3F;
+        --secondary-950: #242828;
+
+        --secondary-foreground-50: #F5F6F6;
+        --secondary-foreground-100: #E5E8E7;
+        --secondary-foreground-200: #CED3D2;
+        --secondary-foreground-300: #ABB5B4;
+        --secondary-foreground-400: #818F8E;
+        --secondary-foreground-500: #667473;
+        --secondary-foreground-600: #586262;
+        --secondary-foreground-700: #515A5A;
+        --secondary-foreground-800: #424848;
+        --secondary-foreground-900: #3A3F3F;
+        --secondary-foreground-950: #242828;
+
+        --accent-50: #F5F6F6;
+        --accent-100: #E5E8E7;
+        --accent-200: #CED3D2;
+        --accent-300: #ABB5B4;
+        --accent-400: #818F8E;
+        --accent-500: #667473;
+        --accent-600: #586262;
+        --accent-700: #515A5A;
+        --accent-800: #424848;
+        --accent-900: #3A3F3F;
+        --accent-950: #242828;
+
+        --accent-foreground-50: #F5F6F6;
+        --accent-foreground-100: #E5E8E7;
+        --accent-foreground-200: #CED3D2;
+        --accent-foreground-300: #ABB5B4;
+        --accent-foreground-400: #818F8E;
+        --accent-foreground-500: #667473;
+        --accent-foreground-600: #586262;
+        --accent-foreground-700: #515A5A;
+        --accent-foreground-800: #424848;
+        --accent-foreground-900: #3A3F3F;
+        --accent-foreground-950: #242828;
+
+        --destructive-50: #FDF4F3;
+        --destructive-100: #FBE7E5;
+        --destructive-200: #F9D3CF;
+        --destructive-300: #F4B4AD;
+        --destructive-400: #EC877D;
+        --destructive-500: #DF6154;
+        --destructive-600: #CB4335;
+        --destructive-700: #AB362A;
+        --destructive-800: #8E3026;
+        --destructive-900: #762D26;
+        --destructive-950: #40140F;
+
+        --destructive-foreground-50: #FDF4F3;
+        --destructive-foreground-100: #FCE6E4;
+        --destructive-foreground-200: #F9D3CF;
+        --destructive-foreground-300: #F4B4AD;
+        --destructive-foreground-400: #EC877D;
+        --destructive-foreground-500: #E06053;
+        --destructive-foreground-600: #CC4436;
+        --destructive-foreground-700: #AB362A;
+        --destructive-foreground-800: #8E3026;
+        --destructive-foreground-900: #762D26;
+        --destructive-foreground-950: #40140F;
+
+        --ring-50: #F7F8F7;
+        --ring-100: #EEF0F0;
+        --ring-200: #CED3D2;
+        --ring-300: #B9C0BE;
+        --ring-400: #939D9B;
+        --ring-500: #75827F;
+        --ring-600: #5F6A68;
+        --ring-700: #4D5756;
+        --ring-800: #424A49;
+        --ring-900: #3A403F;
+        --ring-950: #272A29;
+
+        --radius: 0.5rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}
