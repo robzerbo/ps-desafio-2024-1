@@ -43,12 +43,12 @@ export function DialogUpdateCategory({
     if (response) {
       setError(await JSON.parse(response))
       toast({
-        title: 'Não foi possível editar o produto!',
+        title: 'Não foi possível editar a categoria!',
       })
       return
     } else {
       toast({
-        title: 'Produto editado com sucesso!',
+        title: 'Categoria editada com sucesso!',
       })
     }
     setOpen(false)
@@ -59,9 +59,9 @@ export function DialogUpdateCategory({
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Editar produto</DialogTitle>
+          <DialogTitle>Editar categoria</DialogTitle>
           <DialogDescription>
-            Atualize as informações do produto abaixo e clique em
+            Atualize as informações da categoria abaixo e clique em
             &quot;Salvar&quot; para aplicar as alterações.
           </DialogDescription>
         </DialogHeader>

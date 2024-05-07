@@ -49,7 +49,7 @@ export default async function ListProduct() {
                 </TableCell>
                 <TableCell>{product.name}</TableCell>
                 <TableCell>{product.category.name}</TableCell>
-                <TableCell>{product.quantity}</TableCell>
+                <TableCell>{product.amount}</TableCell>
                 <TableCell className="flex justify-end">
                   <DialogInformationProduct product={product}>
                     <Button variant="ghost" size="icon">

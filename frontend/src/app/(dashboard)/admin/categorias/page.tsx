@@ -6,7 +6,7 @@ import {
   DashboardHeaderTitle,
   DashboardMain,
 } from '@/components/dashboard/dashboard-items'
-import { LuPackage, LuPlusCircle } from 'react-icons/lu'
+import { LuLayers, LuPlusCircle } from 'react-icons/lu'
 import { DialogCreateCategory } from './_components/dialog-create-category'
 import ListCategories from './_components/list-categories'
 
@@ -15,11 +15,11 @@ export default async function Page() {
     <>
       <DashboardHeader>
         <DashboardHeaderTitle>
-          <LuPackage />
-          Produtos
+          <LuLayers />
+          Categorias
         </DashboardHeaderTitle>
         <DashboardHeaderDescription>
-          Cadastre, edite, visualize e exclua produtos.
+          Cadastre, edite, visualize e exclua categorias.
         </DashboardHeaderDescription>
       </DashboardHeader>
       <DashboardMain>
@@ -27,7 +27,7 @@ export default async function Page() {
           <DialogCreateCategory>
             <Button>
               <LuPlusCircle />
-              Novo usuário
+              Nova categoria
             </Button>
           </DialogCreateCategory>
         </DashboardContainer>

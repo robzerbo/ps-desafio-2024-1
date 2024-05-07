@@ -38,12 +38,12 @@ export function DialogCreateCategory({ children }: DialogCreateCategoryProps) {
     if (response) {
       setError(await JSON.parse(response))
       toast({
-        title: 'Não foi possível criar o produto!',
+        title: 'Não foi possível criar a categoria!',
       })
       return
     } else {
       toast({
-        title: 'Produto criado com sucesso!',
+        title: 'Categoria criada com sucesso!',
       })
     }
 
@@ -55,9 +55,9 @@ export function DialogCreateCategory({ children }: DialogCreateCategoryProps) {
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Adicionar produto</DialogTitle>
+          <DialogTitle>Adicionar categoria</DialogTitle>
           <DialogDescription>
-            Preencha as informações do novo produto abaixo e clique em
+            Preencha as informações da nova categoria abaixo e clique em
             &rdquo;Salvar&rdquo; para incluí-lo no sistema.
           </DialogDescription>
         </DialogHeader>

@@ -30,11 +30,11 @@ export function DialogCategoryDelete({
     try {
       await destroyCategory(id)
       toast({
-        title: 'Produto deletado com sucesso!',
+        title: 'Categoria deletada com sucesso!',
       })
     } catch (e) {
       toast({
-        title: 'Não foi possível excluir o produto!',
+        title: 'Não foi possível excluir a categoria!',
       })
     }
     setOpen(false)
@@ -45,11 +45,11 @@ export function DialogCategoryDelete({
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Confirmar exclusão de produto</DialogTitle>
+          <DialogTitle>Confirmar exclusão de categoria</DialogTitle>
           <DialogDescription>
-            Tem certeza de que deseja excluir este produto? Esta ação é
-            irreversível e removerá permanentemente o produto do sistema. Deseja
-            continuar com a exclusão?
+            Tem certeza de que deseja excluir esta categoria? Esta ação é
+            irreversível e removerá permanentemente a categoria do sistema.
+            Deseja continuar com a exclusão?
           </DialogDescription>
         </DialogHeader>
         <form action={submit}>

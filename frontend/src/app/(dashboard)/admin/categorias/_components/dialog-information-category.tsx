@@ -28,9 +28,9 @@ export function DialogInformationCategory({
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Informações do produto</DialogTitle>
+          <DialogTitle>Informações da categoria</DialogTitle>
           <DialogDescription>
-            Visualize as informações detalhadas do produto abaixo.
+            Visualize as informações detalhadas da categoria abaixo.
           </DialogDescription>
         </DialogHeader>
         <FormFieldsCategory category={category} readOnly />

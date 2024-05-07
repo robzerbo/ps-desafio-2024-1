@@ -22,7 +22,7 @@ export default async function ListCategories() {
   } catch (e) {
     return (
       <DashboardContainer className="text-destructive">
-        Não foi possível obter os produtos.
+        Não foi possível obter as categorias.
       </DashboardContainer>
     )
   }

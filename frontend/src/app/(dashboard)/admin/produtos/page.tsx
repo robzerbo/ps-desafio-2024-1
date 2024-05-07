@@ -27,7 +27,7 @@ export default async function Page() {
           <DialogCreateProduct>
             <Button>
               <LuPlusCircle />
-              Novo usuário
+              Novo produto
             </Button>
           </DialogCreateProduct>
         </DashboardContainer>
