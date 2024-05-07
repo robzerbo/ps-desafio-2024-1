@@ -39,7 +39,7 @@ export function SidebarMain() {
           <LuPackage />
           <SidebarNavLinkLabel>Produtos</SidebarNavLinkLabel>
         </SidebarNavLink>
-        <SidebarNavLink href="/admin/categorias-produtos">
+        <SidebarNavLink href="/admin/categorias">
           <LuLayers />
           <SidebarNavLinkLabel>Categoria dos produtos</SidebarNavLinkLabel>
         </SidebarNavLink>
