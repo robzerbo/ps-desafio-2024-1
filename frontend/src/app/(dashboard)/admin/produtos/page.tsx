@@ -6,32 +6,32 @@ import {
   DashboardHeaderTitle,
   DashboardMain,
 } from '@/components/dashboard/dashboard-items'
-import { LuPlusCircle, LuUsers } from 'react-icons/lu'
-import ListUsers from './_components/list-users'
-import { DialogCreateUser } from './_components/dialog-create-user'
+import { LuPackage, LuPlusCircle } from 'react-icons/lu'
+import { DialogCreateProduct } from './_components/dialog-create-product'
+import ListProducts from './_components/list-products'
 
 export default async function Page() {
   return (
     <>
       <DashboardHeader>
         <DashboardHeaderTitle>
-          <LuUsers />
-          Usuários
+          <LuPackage />
+          Produtos
         </DashboardHeaderTitle>
         <DashboardHeaderDescription>
-          Cadastre, edite, visualize e exclua usuários.
+          Cadastre, edite, visualize e exclua produtos.
         </DashboardHeaderDescription>
       </DashboardHeader>
       <DashboardMain>
         <DashboardContainer className="flex justify-end">
-          <DialogCreateUser>
+          <DialogCreateProduct>
             <Button>
               <LuPlusCircle />
               Novo usuário
             </Button>
-          </DialogCreateUser>
+          </DialogCreateProduct>
         </DashboardContainer>
-        <ListUsers />
+        <ListProducts />
       </DashboardMain>
     </>
   )

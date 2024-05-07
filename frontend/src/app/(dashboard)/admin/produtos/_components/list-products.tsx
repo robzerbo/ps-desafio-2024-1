@@ -8,23 +8,22 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/dashboard/table'
-import { api } from '@/services/api'
-import { userType } from '@/types/user'
+import { productType } from '@/types/product'
 import { Button } from '@/components/button'
 import { LuInfo, LuPen, LuTrash } from 'react-icons/lu'
-import { DialogUpdateUser } from './dialog-update-user'
-import { DialogUserDelete } from './dialog-delete-user'
-import { DialogInformationUser } from './dialog-information-user'
+import { DialogUpdateProduct } from './dialog-update-product'
+import { DialogProductDelete } from './dialog-delete-product'
+import { DialogInformationProduct } from './dialog-information-product'
 
-export default async function ListUsers() {
-  let users: userType[]
+export default async function ListProduct() {
+  let products: productType[]
 
   try {
-    users = await api.get('/users')
+    products = null // requisição para a api
   } catch (e) {
     return (
       <DashboardContainer className="text-destructive">
-        Não foi possível obter os usuários.
+        Não foi possível obter os produtos.
       </DashboardContainer>
     )
   }
@@ -37,34 +36,36 @@ export default async function ListUsers() {
             <TableRow>
               <TableHead>Imagem</TableHead>
               <TableHead>Nome</TableHead>
-              <TableHead>E-mail</TableHead>
+              <TableHead>Categoria</TableHead>
+              <TableHead>Quantidade</TableHead>
               <TableHead className="text-right">Ações</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {users?.map((user: userType) => (
-              <TableRow key={user.id}>
+            {products?.map((product: productType) => (
+              <TableRow key={product.id}>
                 <TableCell>
-                  <TabbleCellImage src={user.image} alt="" />
+                  <TabbleCellImage src={product.image} alt="" />
                 </TableCell>
-                <TableCell>{user.name}</TableCell>
-                <TableCell>{user.email}</TableCell>
+                <TableCell>{product.name}</TableCell>
+                <TableCell>{product.category.name}</TableCell>
+                <TableCell>{product.quantity}</TableCell>
                 <TableCell className="flex justify-end">
-                  <DialogInformationUser user={user}>
+                  <DialogInformationProduct product={product}>
                     <Button variant="ghost" size="icon">
                       <LuInfo />
                     </Button>
-                  </DialogInformationUser>
-                  <DialogUpdateUser user={user}>
+                  </DialogInformationProduct>
+                  <DialogUpdateProduct product={product}>
                     <Button variant="ghost" size="icon">
                       <LuPen />
                     </Button>
-                  </DialogUpdateUser>
-                  <DialogUserDelete id={user.id}>
+                  </DialogUpdateProduct>
+                  <DialogProductDelete id={product.id}>
                     <Button variant="ghost" size="icon">
                       <LuTrash />
                     </Button>
-                  </DialogUserDelete>
+                  </DialogProductDelete>
                 </TableCell>
               </TableRow>
             ))}

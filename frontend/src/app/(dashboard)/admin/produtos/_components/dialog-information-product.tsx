@@ -8,19 +8,19 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/dialog'
-import FormFieldsUser from './form-fields-user'
-import { userType } from '@/types/user'
+import FormFieldsProduct from './form-fields-product'
+import { productType } from '@/types/product'
 
-interface DialogInformationUserProps {
-  user?: userType
+interface DialogInformationProductProps {
+  product?: productType
   children: React.ReactNode
   isInformation?: boolean
 }
 
-export function DialogInformationUser({
-  user,
+export function DialogInformationProduct({
+  product,
   children,
-}: DialogInformationUserProps) {
+}: DialogInformationProductProps) {
   return (
     <Dialog>
       <DialogTrigger className="flex items-center gap-2" asChild>
@@ -28,12 +28,12 @@ export function DialogInformationUser({
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Informações do usuário</DialogTitle>
+          <DialogTitle>Informações do produto</DialogTitle>
           <DialogDescription>
-            Visualize as informações detalhadas do usuário abaixo.
+            Visualize as informações detalhadas do produto abaixo.
           </DialogDescription>
         </DialogHeader>
-        <FormFieldsUser user={user} readOnly />
+        <FormFieldsProduct product={product} readOnly />
       </DialogContent>
     </Dialog>
   )
