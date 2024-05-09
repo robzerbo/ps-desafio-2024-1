@@ -23,7 +23,7 @@ class Product extends Model
     ];
 
     // ligação entre a chave estrangeira da tabela Produtcs para a chave id da tabela categoria
-    public function category()
+    public function category_id() // ou category_id??????
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }

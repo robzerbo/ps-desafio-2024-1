@@ -29,14 +29,14 @@ class ProductController extends Controller
 
     public function show(string $id): JsonResponse
     {
-        $product = $this->product->with('category')->findOrFail($id); // pega um produto em específico
+        $product = $this->product->with('category_id')->findOrFail($id); // pega um produto em específico
 
         return response()->json($product, Response::HTTP_OK);
     }
 
     public function store(StoreProductRequest $request): JsonResponse
     {
-        $data = $request->validate(); // valida o request de store
+        $data = $request->validated(); // valida o request de store
         // se tiver uma imagem, deve-se salvar ela no diretório public/storage/<nome>
         // será salvo uma url
         if ($request->hasFile('image')) {
@@ -54,7 +54,7 @@ class ProductController extends Controller
 
     public function update(UpdateProductRequest $request, string $id): JsonResponse
     {
-        $data = $request->validate(); // valida o request de store
+        $data = $request->validated(); // valida o request de store
         $product = $this->product->findOrFail($id); // pega um produto em específico
 
         if ($request->hasFile('image')) {
@@ -69,7 +69,7 @@ class ProductController extends Controller
         }
 
         $product->update($data); // altera algum campo do produto
-        $product_category = $product->with('category')->findOrFail($id);
+        $product_category = $product->with('category_id')->findOrFail($id);
 
         return response()->json($product_category, Response::HTTP_OK);
     }
