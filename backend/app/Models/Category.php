@@ -20,4 +20,14 @@ class Category extends Model
     {
         return $this->hasMany(Product::class, 'category_id', 'id');
     }
+
+    // função para apagar os produtos quando uma categoria associada a eles for apagada
+    protected static function booted()
+    {
+        self::deleting(function (Category $category) {
+            $category->products()->each(function ($product) {
+                $product->delete();
+            });
+        });
+    }
 }

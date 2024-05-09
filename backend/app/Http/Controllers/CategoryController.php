@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class CategoryController extends Controller
 {
@@ -25,7 +26,7 @@ class CategoryController extends Controller
     {
         $category = $this->category->all(); // pega todos os dados do atributo do tipo 'Category'
 
-        return response()->json($category); // envia um objeto do tipo json para o frontend
+        return response()->json($category, Response::HTTP_OK); // envia um objeto do tipo json para o frontend
     }
 
     //mostra uma categoria em específico
@@ -33,7 +34,7 @@ class CategoryController extends Controller
     {
         $category = $this->category->findOrFail($id); //usa a função findOrFail para procurar a categoria
 
-        return response()->json($category);
+        return response()->json($category, Response::HTTP_OK);
     }
 
     // função para armazenar os dados no banco de dados
@@ -42,7 +43,7 @@ class CategoryController extends Controller
         $data = $request->validated(); // função para validar os dados
         $category = $this->category->create($data); // cria no banco de dados um campo com os valores da variável data
 
-        return response()->json($category); // retorna uma resposta para indicar a conclusão da operação
+        return response()->json($category, Response::HTTP_CREATED); // retorna uma resposta para indicar a conclusão da operação
     }
 
     public function update(UpdateCategoryRequest $request, string $id): JsonResponse
@@ -53,5 +54,13 @@ class CategoryController extends Controller
 
         return response()->json($category); // retorna uma resposta para indicar a conclusão da operação
 
+    }
+
+    public function destroy(string $id): JsonResponse
+    {
+        $category = $this->category->findOrFail($id); // porcura a categoria e atribui a variavel '$category'
+        $category->delete();
+
+        return response()->json([], Response::HTTP_NO_CONTENT);
     }
 }

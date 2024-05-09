@@ -14,7 +14,8 @@ return new class extends Migration
         // Criando a tabela 'categories'
         Schema::create('categories', function (Blueprint $table) {
             $table->uuid('id')->primary(); // especificando que é a chave primária
-            $table->string('name', 50)->unique(); // especificando que o name da categoria não pode ser repetido
+            $table->string('name', 100); // especificando que o name da categoria não pode ser repetido
+            // ->unique()
             $table->timestamps();
         });
 

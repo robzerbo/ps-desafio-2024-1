@@ -25,6 +25,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeeder::class);
 
         //fazendo a chamada da função para semear
-        // $this->call(ProductSeeder::class);
+        $this->call(ProductSeeder::class);
     }
 }

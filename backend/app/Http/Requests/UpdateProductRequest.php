@@ -4,14 +4,13 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCategoryRequest extends FormRequest
+class UpdateProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        // tem que ser true para permitir a alteração dos valores
         return true;
     }
 
@@ -22,9 +21,13 @@ class StoreCategoryRequest extends FormRequest
      */
     public function rules(): array
     {
-        // tem que passar as regras se não o dado não é pego no POST
         return [
-            'name' => 'required|min:1|max:100',
+            'name' => 'sometimes|min:1|max:100',
+            'amount' => 'sometimes|min:1|max:1000',
+            'price' => 'sometimes|min:0|max:10000.00',
+            'image' => 'sometimes',
+            'category_id' => 'sometimes',
+            'description' => 'sometimes',
         ];
     }
 }

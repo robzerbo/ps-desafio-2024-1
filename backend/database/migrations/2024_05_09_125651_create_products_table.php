@@ -18,7 +18,7 @@ return new class extends Migration
             $table->double('price');
             $table->string('image');
             // foreignUlid() é a referencia para a tabela categories para usar o id dela
-            $table->foreignUlid('category_id')->references('id')->on('categories');
+            $table->foreignUuid('category_id')->references('id')->on('categories');
             $table->text('description'); // campo nao obrigatório
             $table->timestamps();
         });
