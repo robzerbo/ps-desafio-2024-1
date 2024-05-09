@@ -20,5 +20,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
         $user->assignPermission('admin');
+
+        // fazendo o seed de categoria
+        $this->call(CategorySeeder::class);
+
+        //fazendo a chamada da função para semear
+        // $this->call(ProductSeeder::class);
     }
 }
