@@ -52,7 +52,7 @@ class CategoryController extends Controller
         $category = $this->category->findOrFail($id); // porcura a categoria e atribui a variavel '$category'
         $category->update($data); // altera a categoria encontrada
 
-        return response()->json($category); // retorna uma resposta para indicar a conclusão da operação
+        return response()->json($category, Response::HTTP_OK); // retorna uma resposta para indicar a conclusão da operação
 
     }
 
