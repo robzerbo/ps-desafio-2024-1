@@ -8,7 +8,7 @@ export type productType = {
   image: string
   category_id: string
   category: categoryType
-  description: Text
+  description: string
   created_at: Date
   updated_at: Date
 }

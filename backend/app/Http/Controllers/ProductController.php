@@ -22,14 +22,14 @@ class ProductController extends Controller
     public function index(): JsonResponse
     {
         //pega todos os produtos e mostra
-        $product = $this->product->with('category_id')->get();
+        $product = $this->product->with('category')->get();
 
         return response()->json($product, Response::HTTP_OK);
     }
 
     public function show(string $id): JsonResponse
     {
-        $product = $this->product->with('category_id')->findOrFail($id); // pega um produto em específico
+        $product = $this->product->with('category')->findOrFail($id); // pega um produto em específico
 
         return response()->json($product, Response::HTTP_OK);
     }
@@ -47,7 +47,7 @@ class ProductController extends Controller
         $product = $this->product->create($data); // adiciona o novo produto no banco de dados
         // para retornar a resposta, é feito uma procura do produto em específico
         $id = $product->id;
-        $product_category = $product->with('category_id')->findOrFail($id);
+        $product_category = $product->with('category')->findOrFail($id);
 
         return response()->json($product_category, Response::HTTP_CREATED);
     }
@@ -69,7 +69,7 @@ class ProductController extends Controller
         }
 
         $product->update($data); // altera algum campo do produto
-        $product_category = $product->with('category_id')->findOrFail($id);
+        $product_category = $product->with('category')->findOrFail($id);
 
         return response()->json($product_category, Response::HTTP_OK);
     }

@@ -29,7 +29,23 @@ export default function FormFieldsCategory({
         {category && (
           <Input defaultValue={category.id} type="text" name="id" hidden />
         )}
-        {/* inserir campos do formulário */}
+        {
+          /* adicionado o label para o nome e o input para colocar-lo */
+          <FormField>
+            <Label htmlFor="name" required={!category}>
+              Nome
+            </Label>
+            <Input
+              name="name"
+              id="name"
+              placeholder="Insira o nome da categoria"
+              defaultValue={category?.name}
+              disabled={pending}
+              readOnly={readOnly}
+              error={error?.errors?.name}
+            ></Input>
+          </FormField>
+        }
       </FormFieldsGroup>
       <DialogFooter className={cn({ hidden: readOnly })}>
         <Button type="submit" pending={pending}>

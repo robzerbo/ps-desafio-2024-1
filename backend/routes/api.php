@@ -18,7 +18,7 @@ Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
     Route::apiResource('/users', UserController::class);
     // rotas que precisam da validação de admin para serem usadas (inserir/alterar/excluir product e category)
     Route::apiResource('categories', CategoryController::class)->except('index', 'show');
-    Route::apiResource('products', CategoryController::class)->except('index', 'show');
+    Route::apiResource('products', ProductController::class)->except('index', 'show');
 });
 
 // rotas para o cliente poder ver as categorias e produtos
