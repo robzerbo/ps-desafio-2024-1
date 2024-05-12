@@ -156,6 +156,7 @@ export default function FormFieldsProduct({
             <Label htmlFor="description" required={!product}>
               Descrição
             </Label>
+            {/* mudar para textarea */}
             <Input
               name="description"
               id="description"
