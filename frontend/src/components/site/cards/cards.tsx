@@ -1,9 +1,11 @@
 'use client'
 
-import { api } from '@/services/api'
+// import { api } from '@/services/api'
 import { productType } from '@/types/product'
-import { useState } from 'react'
 import style from './style.module.css'
+import Image from 'next/image'
+import { descreaceAmProduct } from '@/actions/product'
+import { useState } from 'react'
 
 // essa interface indica que os parâmetros do componente são do tipo productType
 interface ProductProps {
@@ -12,12 +14,12 @@ interface ProductProps {
 
 // o card recebe um product e mostra as informações dele
 export default function Card({ product }: ProductProps) {
-  const [amountProduct, setAmountProduct] = useState<number>(product.amount)
+  const [amount, setAmount] = useState<number>(product.amount)
 
   const sellProduct = async () => {
     try {
-      await api.post(`/products/${product.id}`)
-      setAmountProduct(product.amount - 1)
+      await descreaceAmProduct(product.id)
+      setAmount(amount > 0 ? amount - 1 : amount)
     } catch (error) {
       console.log(error)
     }
@@ -25,23 +27,28 @@ export default function Card({ product }: ProductProps) {
 
   return (
     <div className={style.card_container}>
-      <img
+      <Image
         className={style.card_img}
         src={product.image}
         alt="Imagem do produto"
+        width={100}
+        height={100}
       />
+      {/* <img
+        className={style.card_img}
+        src={product.image}
+        alt="Imagem do produto"
+      /> */}
       <div className={style.card_content}>
         <h2 className={style.card_name}>{product.name}</h2>
         <p className={style.card_price}>R$ {product.price}</p>
-        <p className={style.card_amount}>
-          Quantidade disponível: {amountProduct}
-        </p>
+        <p className={style.card_amount}>Quantidade disponível: {amount}</p>
         <p className={style.card_categoryName}>
           Categoria: {product.category.name}
         </p>
         {/* <button>Ver produto</button> */}
         <div className={style.card_burProduct}>
-          {amountProduct > 0 ? (
+          {amount > 0 ? (
             <button onClick={sellProduct}>Comprar</button>
           ) : (
             <p>Esgotado</p>

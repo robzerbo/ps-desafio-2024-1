@@ -1,3 +1,5 @@
+'use client'
+
 import { productType } from '@/types/product'
 
 interface FilterCardsProps {
@@ -12,16 +14,19 @@ export default function FilterCards(props: FilterCardsProps) {
     <>
       {/* Essa primeira condição indica que os filtros não foram usados */}
       {props.filterName === '' && props.filterCat === '0'
-        ? props.products?.map((product: productType, index: number) =>
-            props.renderCards?.(product, index),
-          )
+        ? props.products
+            ?.sort((a, b) => (a.name > b.name ? 1 : -1))
+            .map((product: productType, index: number) =>
+              props.renderCards?.(product, index),
+            )
         : props.filterCat === '0' // essa indica que o da categoria não foi usado, mas o do nome sim
           ? props.products
               ?.filter((product) =>
                 product.name
                   .toLowerCase()
-                  .startsWith(props.filterName!.toLowerCase()),
+                  .includes(props.filterName!.toLowerCase()),
               )
+              .sort((a, b) => (a.name > b.name ? 1 : -1))
               .map((product: productType, index: number) =>
                 props.renderCards?.(product, index),
               )
@@ -31,8 +36,9 @@ export default function FilterCards(props: FilterCardsProps) {
                   product.category_id === props.filterCat &&
                   product.name
                     .toLowerCase()
-                    .startsWith(props.filterName!.toLowerCase()),
+                    .includes(props.filterName!.toLowerCase()),
               )
+              .sort((a, b) => (a.name > b.name ? 1 : -1))
               .map((product: productType, index: number) =>
                 props.renderCards?.(product, index),
               )}

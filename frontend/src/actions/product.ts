@@ -27,3 +27,12 @@ export async function destroyProduct(id: string) {
   await api.delete(`/products/${id}`)
   revalidatePath('/admin/products')
 }
+
+export async function descreaceAmProduct(id: string) {
+  try {
+    await api.post(`/products/${id}`)
+  } catch (e) {
+    return JSON.stringify(e)
+  }
+  revalidatePath('/products')
+}

@@ -35,6 +35,11 @@ export default function Home() {
     setFilterCategory(value)
   }
 
+  function filterReset() {
+    setFilterName('')
+    setFilterCategory('0')
+  }
+
   // criei uma função para renderizar os cards, pois na solução com filtro que encontrei (filterCards.tsx),
   // acabo usando o mesmo trecho de código 3 vezes, ai pra simplificar isso, deixei funcional
   function renderCards(product: productType, index: number) {
@@ -44,12 +49,16 @@ export default function Home() {
   // quando o código rodar, ele vai chamar a função de requisição de produtos
   useEffect(() => {
     requestData()
-  })
+  }, [])
 
   return (
     <>
       {/* é passado uma referencia da função para o filho */}
-      <Navbar funcFilterCat={filterByCategory} funcFilterName={filterByName} />
+      <Navbar
+        funcFilterCat={filterByCategory}
+        funcFilterName={filterByName}
+        funcFilterReset={filterReset}
+      />
       <div className={style.content}>
         <div className={style.centralize}>
           {/* {products?.map((product: productType, index: number) => (

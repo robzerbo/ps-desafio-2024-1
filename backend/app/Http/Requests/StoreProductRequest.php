@@ -23,8 +23,8 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'name' => 'required|min:1|max:100',
-            'amount' => 'required|min:1|max:100000',
-            'price' => 'required|min:1|max:1000000',
+            'amount' => 'required|min:0|max:100000',
+            'price' => 'required|min:0|max:1000000',
             'image' => 'required',
             'category_id' => 'required',
             'description' => 'required',

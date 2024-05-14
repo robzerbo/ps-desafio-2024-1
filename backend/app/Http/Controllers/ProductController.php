@@ -82,12 +82,16 @@ class ProductController extends Controller
         return response()->json([], Response::HTTP_NO_CONTENT);
     }
 
-    // criar um Request??
+    // criar um Request?? acho que request é apenas para dados de formulário
     public function updateAmount(string $id)
     {
         $product = $this->product->findOrFail($id);
-        $product->update(['amount' => $product->amount - 1]);
+        if ($product->amount > 0) {
+            $product->update(['amount' => $product->amount - 1]);
 
-        return response()->json($product, Response::HTTP_OK);
+            return response()->json($product, Response::HTTP_OK);
+        } else {
+            return response()->json('product->amount: '.$product->amount.". Product->amount can't be lower than 0", Response::HTTP_LOCKED);
+        }
     }
 }

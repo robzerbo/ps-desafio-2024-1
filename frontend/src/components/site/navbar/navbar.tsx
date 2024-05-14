@@ -3,17 +3,20 @@
 import { api } from '@/services/api'
 import { categoryType } from '@/types/category'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import style from './style.module.css'
 
 interface FilterProps {
   funcFilterCat?: (name: string) => void | undefined
   funcFilterName?: (value: string) => void | undefined
+  funcFilterReset?: () => void | undefined
 }
 
 export default function Navbar(props: FilterProps) {
   const [categories, setCategories] = useState<categoryType[] | null>()
+  const inputNameRef = useRef<HTMLInputElement>(null)
+  const inputCatRef = useRef<HTMLSelectElement>(null)
 
   const requestCategories = async () => {
     try {
@@ -26,7 +29,13 @@ export default function Navbar(props: FilterProps) {
 
   useEffect(() => {
     requestCategories()
-  })
+  }, [])
+
+  function reset() {
+    props.funcFilterReset!()
+    inputNameRef.current!.value = ''
+    inputCatRef.current!.value = '0'
+  }
 
   return (
     <>
@@ -43,8 +52,8 @@ export default function Navbar(props: FilterProps) {
         <div className={style.nav_center}>
           <div className={style.nav_filter}>
             <select
+              ref={inputCatRef}
               name="category"
-              // ou onChange={filter}
               onChange={(evt) => props.funcFilterCat?.(evt.target.value)} // passa a referencia da função de volta para o pai (page)
             >
               <option key={0} value={0}>
@@ -59,13 +68,15 @@ export default function Navbar(props: FilterProps) {
                 ))}
             </select>
             <input
+              ref={inputNameRef}
               id="filterName"
               type="text"
               placeholder="Filtre pelo nome"
               onChange={(evt) => props.funcFilterName?.(evt.target.value)} // passa a referencia da função de volta para o pai (page)
             />
             {/* botao para resetar os filtros */}
-            {/* <button onClick={}></button> */}
+            {/* <button onClick={props.funcFilterReset}>Ola</button> */}
+            <button onClick={reset}>Limpar</button>
           </div>
         </div>
         <div className={style.nav_right}>
