@@ -81,4 +81,13 @@ class ProductController extends Controller
 
         return response()->json([], Response::HTTP_NO_CONTENT);
     }
+
+    // criar um Request??
+    public function updateAmount(string $id)
+    {
+        $product = $this->product->findOrFail($id);
+        $product->update(['amount' => $product->amount - 1]);
+
+        return response()->json($product, Response::HTTP_OK);
+    }
 }

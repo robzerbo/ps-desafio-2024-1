@@ -1,0 +1,39 @@
+.card_container {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+
+    margin: 10px;
+
+    background-color: lightgray;
+}
+
+.card_img {
+    width: 200px;
+    height: 200px;
+}
+
+.card_content {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+
+    padding: 5px;
+}
+
+.card_name {
+    align-self: center;
+    font-size: 1.3rem;
+}
+
+.card_price {}
+
+.card_amount {}
+
+.card_categoryName {}
+
+/* .card_seeProduct */
+
+.card_buyProduct {
+    align-self: center;
+}

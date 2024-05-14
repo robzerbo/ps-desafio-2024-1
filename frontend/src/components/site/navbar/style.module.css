@@ -1,0 +1,129 @@
+.nav_bar {
+    background-color: red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+/* LOGO  */
+.nav_left {
+    background-color: black;
+}
+
+.nav_left img {
+    height: 70px;
+    width: 80px;
+}
+
+/* BARRA DE PESQUISA */
+
+.nav_filter select {
+    cursor: pointer;
+    background-color: white;
+    appearance: none;
+    padding: 5px;
+    align-items: center;
+    outline: none;
+    text-align: center;
+}
+
+.nav_filter select::selection {
+    border: 0px;
+    background-color: white;
+}
+
+.nav_filter select:focus {
+    background-color: white;
+
+}
+
+.nav_filter select:hover {
+    background-color: white;
+    transition: .5s;
+}
+
+.nav_center {
+    background-color: black;
+}
+
+
+/* CATEGORIAS E OUTROS CAMPOS DA LISTA */
+.nav_right {
+    background-color: gray;
+    height: 100%;
+    /* align-content: center; */
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+
+.nav_list {
+    display: flex;
+    /* align-content: center; */
+    /* margin: 0px;
+    border: 0px;
+    border-left: 10px;
+    border-right: 10px; */
+    /* border: solid 1px black; */
+    height: 100%;
+}
+
+.nav_list_item {
+    display: flex;
+    align-content: center;
+
+    margin: 0px;
+    /* background-color: blue; */
+    /* border: solid 1px black; */
+    color: black;
+
+
+}
+
+/* .nav_list_item select {
+    cursor: pointer;
+    background-color: gray;
+    appearance: none;
+    padding: 5px;
+    align-items: center;
+    outline: none;
+    text-align: center;
+}
+
+.nav_list_item select::selection {
+    border: 0px;
+    background-color: gray;
+}
+
+.nav_list_item select:focus {
+    background-color: lightgray;
+
+}
+
+.nav_list_item select:hover {
+    background-color: lightgray;
+    transition: .5s;
+} */
+
+.nav_list_item a {
+    display: flex;
+    align-items: center;
+
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    text-decoration: none;
+
+}
+
+.nav_list_item a:hover {
+
+    background-color: lightgray;
+    transition: .5s;
+}

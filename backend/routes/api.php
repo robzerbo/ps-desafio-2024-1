@@ -26,6 +26,7 @@ Route::get('categories', [CategoryController::class, 'index']);
 Route::get('categories/{id}', [CategoryController::class, 'show']);
 Route::get('products', [ProductController::class, 'index']);
 Route::get('products/{id}', [ProductController::class, 'show']);
+Route::post('products/{id}', [ProductController::class, 'updateAmount']);
 
 // rota inicial do site
 Route::get('/', function () {
