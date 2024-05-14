@@ -17,12 +17,10 @@ export default function FilterCards(props: FilterCardsProps) {
           )
         : props.filterCat === '0' // essa indica que o da categoria não foi usado, mas o do nome sim
           ? props.products
-              ?.filter(
-                (product) =>
-                  product.category_id === props.filterCat ||
-                  product.name
-                    .toLowerCase()
-                    .startsWith(props.filterName!.toLowerCase()),
+              ?.filter((product) =>
+                product.name
+                  .toLowerCase()
+                  .startsWith(props.filterName!.toLowerCase()),
               )
               .map((product: productType, index: number) =>
                 props.renderCards?.(product, index),

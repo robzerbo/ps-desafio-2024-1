@@ -6,7 +6,6 @@ import { categoryType } from '@/types/category'
 import { useEffect, useState } from 'react'
 
 import style from './style.module.css'
-// import { UUID } from 'crypto'
 
 interface FilterProps {
   funcFilterCat?: (name: string) => void | undefined
@@ -28,12 +27,6 @@ export default function Navbar(props: FilterProps) {
   useEffect(() => {
     requestCategories()
   })
-
-  // quando for selecionado uma categoria, vai chamar essa função e ela vai chama a função do pai passando o id da categoria
-  // para realizar a filtragem
-  //   function filter(event) {
-  //     props.func(event.target.value)
-  //   }
 
   return (
     <>
@@ -66,9 +59,12 @@ export default function Navbar(props: FilterProps) {
                 ))}
             </select>
             <input
+              id="filterName"
               type="text"
+              placeholder="Filtre pelo nome"
               onChange={(evt) => props.funcFilterName?.(evt.target.value)} // passa a referencia da função de volta para o pai (page)
             />
+            {/* botao para resetar os filtros */}
             {/* <button onClick={}></button> */}
           </div>
         </div>

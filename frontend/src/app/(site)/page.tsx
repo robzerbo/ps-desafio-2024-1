@@ -35,6 +35,8 @@ export default function Home() {
     setFilterCategory(value)
   }
 
+  // criei uma função para renderizar os cards, pois na solução com filtro que encontrei (filterCards.tsx),
+  // acabo usando o mesmo trecho de código 3 vezes, ai pra simplificar isso, deixei funcional
   function renderCards(product: productType, index: number) {
     return <Card product={product} key={index} />
   }

@@ -22,16 +22,16 @@ class ProductSeeder extends Seeder
             'category_id' => $category[0]->id,
         ]);
 
-        Product::factory(3)->create([
+        Product::factory(4)->create([
             'category_id' => $category[1]->id,
         ]);
 
-        Product::factory(3)->create([
-            'category_id' => $category[2]->id,
-        ]);
+        // Product::factory(5)->create([
+        //     'category_id' => $category[2]->id,
+        // ]);
 
-        Product::factory(3)->create([
-            'category_id' => $category[3]->id,
-        ]);
+        // Product::factory(6)->create([
+        //     'category_id' => $category[3]->id,
+        // ]);
     }
 }

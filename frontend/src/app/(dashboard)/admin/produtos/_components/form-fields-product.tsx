@@ -149,6 +149,11 @@ export default function FormFieldsProduct({
                 </SelectGroup>
               </SelectContent>
             </Select>
+            {error?.errors?.category_id && (
+              <p className="text-destructive text-xs mt-2">
+                {error?.errors?.category_id}
+              </p>
+            )}
           </FormField>
         }
         {
