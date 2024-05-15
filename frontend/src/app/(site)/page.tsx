@@ -4,16 +4,18 @@ import Card from '@/components/site/cards/cards'
 import Navbar from '@/components/site/navbar/navbar'
 import { api } from '@/services/api'
 import { productType } from '@/types/product'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import style from '@/app/(site)/style.module.css'
 import FilterCards from './filterCards'
 import Footer from '@/components/site/footer/footer'
+import ThemeContextProvider, { ThemeContext } from './theme-context'
 
 export default function Home() {
   // setProducts é a função para pegar jogadores
   const [products, setProducts] = useState<productType[] | null>()
   const [filterCategory, setFilterCategory] = useState<string>('0')
   const [filterName, setFilterName] = useState<string>('')
+  const { theme } = useContext(ThemeContext)
 
   const requestData = async () => {
     try {
@@ -56,25 +58,29 @@ export default function Home() {
   return (
     <>
       {/* é passado uma referencia da função para o filho */}
-      <Navbar
-        funcFilterCat={filterByCategory}
-        funcFilterName={filterByName}
-        funcFilterReset={filterReset}
-      />
-      <div className={style.productspage}>
-        {/* 'FilterCards' é uma tag criada para lidar com a parte lógica de filtrar os cards */}
-        {/* criei ela para deixar esse arquivo mais simplificado */}
-        <div className={style.wrapper}>
-          <FilterCards
-            products={products}
-            filterCat={filterCategory}
-            filterName={filterName}
-            renderCards={renderCards}
-          />
+      <ThemeContextProvider>
+        <Navbar
+          funcFilterCat={filterByCategory}
+          funcFilterName={filterByName}
+          funcFilterReset={filterReset}
+        />
+        <div
+          className={`${style.productspage} + ${theme === 'light' ? style.productspage_light : style.productspage_dark}`}
+        >
+          {/* 'FilterCards' é uma tag criada para lidar com a parte lógica de filtrar os cards */}
+          {/* criei ela para deixar esse arquivo mais simplificado */}
+          <div className={style.wrapper}>
+            <FilterCards
+              products={products}
+              filterCat={filterCategory}
+              filterName={filterName}
+              renderCards={renderCards}
+            />
+          </div>
         </div>
-      </div>
 
-      <Footer />
+        <Footer />
+      </ThemeContextProvider>
     </>
   )
 }

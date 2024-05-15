@@ -3,10 +3,11 @@
 import { api } from '@/services/api'
 import { categoryType } from '@/types/category'
 
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 
 import style from './style.module.css'
 import { getSession } from 'next-auth/react'
+import { ThemeContext } from '@/app/(site)/theme-context'
 
 interface FilterProps {
   funcFilterCat?: (name: string) => void | undefined
@@ -19,6 +20,7 @@ export default function Navbar(props: FilterProps) {
   const [categories, setCategories] = useState<categoryType[] | null>()
   const inputNameRef = useRef<HTMLInputElement>(null)
   const inputCatRef = useRef<HTMLSelectElement>(null)
+  const { theme, toggleTheme } = useContext(ThemeContext)
 
   const requestSession = async () => {
     try {
@@ -51,11 +53,14 @@ export default function Navbar(props: FilterProps) {
 
   return (
     <>
-      <div className={style.nav_bar}>
+      <div
+        className={`${style.nav_bar} +
+        ${theme === 'light' ? style.nav_bar_light : style.nav_bar_dark}`}
+      >
         <div className={style.nav_left}>
           <a href="#">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/LEGO_logo.svg/1024px-LEGO_logo.svg.png"
+              src="http://localhost:8000/storage/products//RmW5QXw2L1SSS61sxTUX6TWJuT4Lel9Mq71AY9tz.jpg"
               alt=""
             />
           </a>
@@ -64,7 +69,7 @@ export default function Navbar(props: FilterProps) {
         <div className={style.nav_center}>
           {/* <div className={style.nav_filter}> */}
           <select
-            className={style.select}
+            className={`${style.select} + ${theme === 'light' ? style.select_light : style.select_dark}`}
             ref={inputCatRef}
             id="category"
             name="category"
@@ -86,7 +91,7 @@ export default function Navbar(props: FilterProps) {
               ))}
           </select>
           <input
-            className={style.input}
+            className={`${style.input} + ${theme === 'light' ? style.input_light : style.input_dark}`}
             ref={inputNameRef}
             id="filterName"
             type="text"
@@ -94,7 +99,11 @@ export default function Navbar(props: FilterProps) {
             onChange={(evt) => props.funcFilterName?.(evt.target.value)} // passa a referencia da função de volta para o pai (page)
           />
           {/* botao para resetar os filtros */}
-          <button id="resetFilter" className={style.button} onClick={reset}>
+          <button
+            id="resetFilter"
+            className={`${style.button} + ${theme === 'light' ? style.button_light : style.button_dark}`}
+            onClick={reset}
+          >
             Limpar
           </button>
           {/* </div> */}
@@ -105,7 +114,9 @@ export default function Navbar(props: FilterProps) {
               <a href="#">Sobre o site</a>
             </li>
             <li className={style.nav_list_item}>
-              <a href="#">Dark Mode</a>
+              <button onClick={() => toggleTheme()}>
+                {theme === 'light' ? 'Dark ' : 'Light '}Mode
+              </button>
             </li>
             <li className={style.nav_list_item}>
               <a href="/admin">{isAuth ? 'Logado' : 'Sign-in'}</a>

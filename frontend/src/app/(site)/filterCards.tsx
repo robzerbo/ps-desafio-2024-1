@@ -6,7 +6,7 @@ interface FilterCardsProps {
   products?: productType[] | null
   filterCat?: string
   filterName?: string
-  renderCards?: (product: productType, index: number) => void // void??
+  renderCards?: (product: productType, index: number) => void
 }
 
 export default function FilterCards(props: FilterCardsProps) {

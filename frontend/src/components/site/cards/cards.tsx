@@ -5,7 +5,8 @@ import { productType } from '@/types/product'
 import style from './style.module.css'
 import Image from 'next/image'
 import { descreaceAmProduct } from '@/actions/product'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { ThemeContext } from '@/app/(site)/theme-context'
 
 // essa interface indica que os parâmetros do componente são do tipo productType
 interface ProductProps {
@@ -15,6 +16,7 @@ interface ProductProps {
 // o card recebe um product e mostra as informações dele
 export default function Card({ product }: ProductProps) {
   const [amount, setAmount] = useState<number>(product.amount)
+  const { theme } = useContext(ThemeContext)
 
   const sellProduct = async () => {
     try {
@@ -26,7 +28,9 @@ export default function Card({ product }: ProductProps) {
   }
 
   return (
-    <div className={style.card}>
+    <div
+      className={`${style.card} + ${theme === 'light' ? style.card_light : style.card_dark}`}
+    >
       <Image
         className={style.card_img}
         src={product.image}
@@ -43,7 +47,9 @@ export default function Card({ product }: ProductProps) {
         <h2 className={style.card_name}>{product.name}</h2>
         <p className={style.card_price}>R$ {product.price}</p>
         <p className={style.card_amount}>Estoque: {amount} un</p>
-        <p className={style.card_categoryName}>{product.category.name}</p>
+        <p className={style.card_categoryName}>
+          Categoria: {product.category.name}
+        </p>
         {/* <button>Ver produto</button> */}
         <div className={style.card_buyProduct}>
           {amount > 0 ? (
