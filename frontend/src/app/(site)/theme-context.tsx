@@ -1,11 +1,11 @@
-import { useState, createContext } from 'react'
+import { useState, createContext, ComponentProps } from 'react'
 
 export const ThemeContext = createContext({
   theme: 'light',
   toggleTheme: () => {},
 })
 
-const ThemeContextProvider = ({ children }) => {
+const ThemeContextProvider = ({ children }: ComponentProps<'div'>) => {
   const [theme, setTheme] = useState('light')
 
   const toggleTheme = () => {
