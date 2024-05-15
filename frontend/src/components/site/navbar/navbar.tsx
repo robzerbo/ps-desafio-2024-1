@@ -6,6 +6,7 @@ import { categoryType } from '@/types/category'
 import { useEffect, useRef, useState } from 'react'
 
 import style from './style.module.css'
+import { getSession } from 'next-auth/react'
 
 interface FilterProps {
   funcFilterCat?: (name: string) => void | undefined
@@ -14,9 +15,19 @@ interface FilterProps {
 }
 
 export default function Navbar(props: FilterProps) {
+  const [isAuth, setIsAuth] = useState<boolean>()
   const [categories, setCategories] = useState<categoryType[] | null>()
   const inputNameRef = useRef<HTMLInputElement>(null)
   const inputCatRef = useRef<HTMLSelectElement>(null)
+
+  const requestSession = async () => {
+    try {
+      const sessionResponse = await getSession()
+      setIsAuth(!!sessionResponse?.user)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const requestCategories = async () => {
     try {
@@ -28,6 +39,7 @@ export default function Navbar(props: FilterProps) {
   }
 
   useEffect(() => {
+    requestSession()
     requestCategories()
   }, [])
 
@@ -41,7 +53,7 @@ export default function Navbar(props: FilterProps) {
     <>
       <div className={style.nav_bar}>
         <div className={style.nav_left}>
-          <a href="">
+          <a href="#">
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/LEGO_logo.svg/1024px-LEGO_logo.svg.png"
               alt=""
@@ -50,61 +62,53 @@ export default function Navbar(props: FilterProps) {
         </div>
         {/* isso é extra */}
         <div className={style.nav_center}>
-          <div className={style.nav_filter}>
-            <select
-              ref={inputCatRef}
-              name="category"
-              onChange={(evt) => props.funcFilterCat?.(evt.target.value)} // passa a referencia da função de volta para o pai (page)
-            >
-              <option key={0} value={0}>
-                Todas as Categorias
-              </option>
-              {categories
-                ?.sort((a, b) => (a.name > b.name ? 1 : -1))
-                .map((category: categoryType, index: number) => (
-                  <option key={index + 1} value={category.id}>
-                    {category.name}
-                  </option>
-                ))}
-            </select>
-            <input
-              ref={inputNameRef}
-              id="filterName"
-              type="text"
-              placeholder="Filtre pelo nome"
-              onChange={(evt) => props.funcFilterName?.(evt.target.value)} // passa a referencia da função de volta para o pai (page)
-            />
-            {/* botao para resetar os filtros */}
-            {/* <button onClick={props.funcFilterReset}>Ola</button> */}
-            <button onClick={reset}>Limpar</button>
-          </div>
+          {/* <div className={style.nav_filter}> */}
+          <select
+            className={style.select}
+            ref={inputCatRef}
+            id="category"
+            name="category"
+            onChange={(evt) => props.funcFilterCat?.(evt.target.value)} // passa a referencia da função de volta para o pai (page)
+          >
+            <option className={style.select_option} key={0} value={0}>
+              Todas as Categorias
+            </option>
+            {categories
+              ?.sort((a, b) => (a.name > b.name ? 1 : -1))
+              .map((category: categoryType, index: number) => (
+                <option
+                  className={style.select_option}
+                  key={index + 1}
+                  value={category.id}
+                >
+                  {category.name}
+                </option>
+              ))}
+          </select>
+          <input
+            className={style.input}
+            ref={inputNameRef}
+            id="filterName"
+            type="text"
+            placeholder="Filtre pelo nome"
+            onChange={(evt) => props.funcFilterName?.(evt.target.value)} // passa a referencia da função de volta para o pai (page)
+          />
+          {/* botao para resetar os filtros */}
+          <button id="resetFilter" className={style.button} onClick={reset}>
+            Limpar
+          </button>
+          {/* </div> */}
         </div>
         <div className={style.nav_right}>
           <ul className={style.nav_list}>
-            {/* <li className={style.nav_list_item}>
-              <select
-                name="category"
-                // ou onChange={filter}
-                onChange={(evt) => props.funcFilterCat?.(evt.target.value)}
-              >
-                <option key={0} value={0}>
-                  Todas as Categorias
-                </option>
-                {categories?.map((category: categoryType, index: number) => (
-                  <option key={index + 1} value={category.id}>
-                    {category.name}
-                  </option>
-                ))}
-              </select>
-            </li> */}
             <li className={style.nav_list_item}>
-              <a href="">Sobre o site</a>
+              <a href="#">Sobre o site</a>
             </li>
             <li className={style.nav_list_item}>
-              <a href="">Dark Mode</a>
+              <a href="#">Dark Mode</a>
             </li>
             <li className={style.nav_list_item}>
-              <a href="">Sing-in</a>
+              <a href="/admin">{isAuth ? 'Logado' : 'Sign-in'}</a>
             </li>
           </ul>
         </div>

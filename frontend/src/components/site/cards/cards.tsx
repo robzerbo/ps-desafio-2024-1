@@ -26,7 +26,7 @@ export default function Card({ product }: ProductProps) {
   }
 
   return (
-    <div className={style.card_container}>
+    <div className={style.card}>
       <Image
         className={style.card_img}
         src={product.image}
@@ -39,15 +39,13 @@ export default function Card({ product }: ProductProps) {
         src={product.image}
         alt="Imagem do produto"
       /> */}
-      <div className={style.card_content}>
+      <div className={style.card_body}>
         <h2 className={style.card_name}>{product.name}</h2>
         <p className={style.card_price}>R$ {product.price}</p>
-        <p className={style.card_amount}>Quantidade disponível: {amount}</p>
-        <p className={style.card_categoryName}>
-          Categoria: {product.category.name}
-        </p>
+        <p className={style.card_amount}>Estoque: {amount} un</p>
+        <p className={style.card_categoryName}>{product.category.name}</p>
         {/* <button>Ver produto</button> */}
-        <div className={style.card_burProduct}>
+        <div className={style.card_buyProduct}>
           {amount > 0 ? (
             <button onClick={sellProduct}>Comprar</button>
           ) : (

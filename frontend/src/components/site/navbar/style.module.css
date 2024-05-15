@@ -1,5 +1,5 @@
 .nav_bar {
-    background-color: red;
+    background-color: gray;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -7,9 +7,6 @@
 }
 
 /* LOGO  */
-.nav_left {
-    background-color: black;
-}
 
 .nav_left img {
     height: 70px;
@@ -18,7 +15,24 @@
 
 /* BARRA DE PESQUISA */
 
-.nav_filter select {
+.nav_center {
+    display: flex;
+    align-items: center;
+    /* background-color: black; */
+    height: fit-content;
+    min-width: fit-content;
+    width: 40%;
+}
+
+/* .nav_filter {
+    display: flex;
+    align-items: center;
+    background-color: black;
+    height: 50px;
+    width: 80%;
+} */
+
+.select {
     cursor: pointer;
     background-color: white;
     appearance: none;
@@ -26,25 +40,62 @@
     align-items: center;
     outline: none;
     text-align: center;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+
+    height: 35px;
+    min-width: fit-content;
+    width: 27%;
+
+    border-right: dashed 1px rgb(209, 209, 209);
 }
 
-.nav_filter select::selection {
+.select_option {}
+
+/* .select::selection {
     border: 0px;
-    background-color: white;
+    background-color: rgb(224, 224, 224);
+} */
+
+.select:focus,
+.input:focus {
+    background-color: rgb(224, 224, 224);
+    transition: 0.5s;
 }
 
-.nav_filter select:focus {
-    background-color: white;
-
-}
-
-.nav_filter select:hover {
-    background-color: white;
+.select:hover,
+.input:hover,
+.button:hover {
+    background-color: rgb(224, 224, 224);
     transition: .5s;
 }
 
-.nav_center {
-    background-color: black;
+.input {
+    height: 35px;
+    /* border-left: 5px; */
+    margin: 0px;
+    padding: 5px;
+    width: 63%;
+    outline: none;
+    /* border-radius: 50px; */
+}
+
+/* .input:focus {
+    background-color: rgb(224, 224, 224);
+    transition: 0.5s;
+} */
+
+.button {
+    background-color: white;
+    height: 35px;
+    padding: 5px;
+    border-left: dashed 1px rgb(209, 209, 209);
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+
+
+    min-width: fit-content;
+    width: 10%;
 }
 
 
@@ -75,7 +126,7 @@
 
 .nav_list_item {
     display: flex;
-    align-content: center;
+    /* align-content: center; */
 
     margin: 0px;
     /* background-color: blue; */

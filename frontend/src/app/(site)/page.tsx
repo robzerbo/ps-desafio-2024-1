@@ -7,6 +7,7 @@ import { productType } from '@/types/product'
 import { useEffect, useState } from 'react'
 import style from '@/app/(site)/style.module.css'
 import FilterCards from './filterCards'
+import Footer from '@/components/site/footer/footer'
 
 export default function Home() {
   // setProducts é a função para pegar jogadores
@@ -35,6 +36,7 @@ export default function Home() {
     setFilterCategory(value)
   }
 
+  // função que vai mudar os parâmetros do filtro para o valor que eu defini como padrão para não serem considerados
   function filterReset() {
     setFilterName('')
     setFilterCategory('0')
@@ -59,21 +61,20 @@ export default function Home() {
         funcFilterName={filterByName}
         funcFilterReset={filterReset}
       />
-      <div className={style.content}>
-        <div className={style.centralize}>
-          {/* {products?.map((product: productType, index: number) => (
-            <Cardproduct={product} key={index} />
-          ))} */}
-        </div>
+      <div className={style.productspage}>
         {/* 'FilterCards' é uma tag criada para lidar com a parte lógica de filtrar os cards */}
         {/* criei ela para deixar esse arquivo mais simplificado */}
-        <FilterCards
-          products={products}
-          filterCat={filterCategory}
-          filterName={filterName}
-          renderCards={renderCards}
-        />
+        <div className={style.wrapper}>
+          <FilterCards
+            products={products}
+            filterCat={filterCategory}
+            filterName={filterName}
+            renderCards={renderCards}
+          />
+        </div>
       </div>
+
+      <Footer />
     </>
   )
 }
