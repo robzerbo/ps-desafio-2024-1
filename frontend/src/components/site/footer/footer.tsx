@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <div className={style.footer_content}>
       <div
-        className={`${style.footer_contacts} + ${theme === 'light' ? style.footer_light : style.footer_dark}`}
+        className={`${style.footer_contacts} + ${theme === 'light' ? style.footer_contacts_light : style.footer_contacts_dark}`}
       >
         <h1>Zerboni Kids</h1>
         <p>A melhor loja de roupas e acessórios do bebê ao infanto-juvenil.</p>
@@ -32,7 +32,7 @@ export default function Footer() {
         </div>
       </div>
       <div
-        className={`${style.footer_dev} + ${theme === 'light' ? style.footer_light : style.footer_dark}`}
+        className={`${style.footer_dev} + ${theme === 'light' ? style.footer_dev_light : style.footer_dev_dark}`}
       >
         <h1>@ 2024, feito por Roberto Zerboni Oliari</h1>
       </div>

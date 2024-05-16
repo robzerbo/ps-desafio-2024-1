@@ -69,7 +69,7 @@ export default function Navbar(props: FilterProps) {
         <div className={style.nav_center}>
           {/* <div className={style.nav_filter}> */}
           <select
-            className={`${style.select} + ${theme === 'light' ? style.select_light : style.select_dark}`}
+            className={`${style.select} + ${theme === 'light' ? style.nav_center_itens_light : style.nav_center_itens_dark}`}
             ref={inputCatRef}
             id="category"
             name="category"
@@ -91,7 +91,7 @@ export default function Navbar(props: FilterProps) {
               ))}
           </select>
           <input
-            className={`${style.input} + ${theme === 'light' ? style.input_light : style.input_dark}`}
+            className={`${style.input} + ${theme === 'light' ? style.nav_center_itens_light : style.nav_center_itens_dark}`}
             ref={inputNameRef}
             id="filterName"
             type="text"
@@ -101,7 +101,7 @@ export default function Navbar(props: FilterProps) {
           {/* botao para resetar os filtros */}
           <button
             id="resetFilter"
-            className={`${style.button} + ${theme === 'light' ? style.button_light : style.button_dark}`}
+            className={`${style.button} + ${theme === 'light' ? style.nav_center_itens_light : style.nav_center_itens_dark}`}
             onClick={reset}
           >
             Limpar
@@ -114,7 +114,10 @@ export default function Navbar(props: FilterProps) {
               <a href="#">Sobre o site</a>
             </li>
             <li className={style.nav_list_item}>
-              <button onClick={() => toggleTheme()}>
+              <button
+                className={style.nav_list_item}
+                onClick={() => toggleTheme()}
+              >
                 {theme === 'light' ? 'Dark ' : 'Light '}Mode
               </button>
             </li>

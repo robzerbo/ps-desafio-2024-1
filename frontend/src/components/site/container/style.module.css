@@ -32,8 +32,12 @@
 
 @media screen and (max-width: 530px) {
     .wrapper {
+        margin: 3rem 0.2rem 3rem 0.2rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .wrapper {
         display: block;
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
     }
 }
