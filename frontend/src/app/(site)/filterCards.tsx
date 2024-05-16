@@ -7,6 +7,7 @@ interface FilterCardsProps {
   products?: productType[] | null
   filterCat?: string
   filterName?: string
+  reloadData: () => void
   // renderCards?: (product: productType, index: number) => void
 }
 
@@ -18,7 +19,11 @@ export default function FilterCards(props: FilterCardsProps) {
         ? props.products
             ?.sort((a, b) => (a.name > b.name ? 1 : -1))
             .map((product: productType, index: number) => (
-              <Card product={product} key={index} />
+              <Card
+                product={product}
+                key={index}
+                reloadData={props.reloadData}
+              />
             ))
         : props.filterCat === '0' // essa indica que o da categoria não foi usado, mas o do nome sim
           ? props.products
@@ -29,7 +34,11 @@ export default function FilterCards(props: FilterCardsProps) {
               )
               .sort((a, b) => (a.name > b.name ? 1 : -1))
               .map((product: productType, index: number) => (
-                <Card product={product} key={index} />
+                <Card
+                  product={product}
+                  key={index}
+                  reloadData={props.reloadData}
+                />
               ))
           : props.products // essa ultima indica que os dois filtros foram usados, ou apenas o de categoria
               ?.filter(
@@ -41,7 +50,11 @@ export default function FilterCards(props: FilterCardsProps) {
               )
               .sort((a, b) => (a.name > b.name ? 1 : -1))
               .map((product: productType, index: number) => (
-                <Card product={product} key={index} />
+                <Card
+                  product={product}
+                  key={index}
+                  reloadData={props.reloadData}
+                />
               ))}
     </>
   )

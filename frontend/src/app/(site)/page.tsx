@@ -51,6 +51,14 @@ export default function Home() {
 
   // }
 
+  // essa função tem como objetivo recarregar os produtos da página toda vez que algum for comprado.
+  // ela existe pois tive problemas para criar um useState que armazenasse a quantidade e que funcionasse juntamente com o filtro
+  // o problema é que toda vez q eu filtrava um produto, ele usava a variavel useState da quantidade de outro produto.
+  // este outro produto é o que ficava na posição que o produto filtrado passou a ocupar no momento.
+  function reloadData() {
+    requestData()
+  }
+
   // quando o código rodar, ele vai chamar a função de requisição de produtos
   useEffect(() => {
     requestData()
@@ -74,6 +82,7 @@ export default function Home() {
             filterCat={filterCategory}
             filterName={filterName}
             // renderCards={renderCards}
+            reloadData={reloadData}
           />
         </Container>
         <Footer />
