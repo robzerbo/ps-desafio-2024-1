@@ -1,5 +1,5 @@
 import { ThemeContext } from '@/app/(site)/theme-context'
-import { ComponentProps, useContext } from 'react'
+import { ReactNode, useContext } from 'react'
 import style from './style.module.css'
 
 // criei esse arquivo para que o darkmode funcionasse no plano de fundo do site todo
@@ -8,7 +8,11 @@ import style from './style.module.css'
 // ThemeContextProvider tem que estar acima dos contextos que ele vai alterar, ou seja, este arquivo
 // deixa o contexto abaixo dele para que possa ser usado
 
-export default function Container({ children }: ComponentProps<'div'>) {
+interface ContainerProps {
+  children: ReactNode
+}
+
+export default function Container({ children }: ContainerProps) {
   const { theme } = useContext(ThemeContext)
 
   return (
