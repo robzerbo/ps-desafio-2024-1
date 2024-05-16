@@ -1,0 +1,39 @@
+.productspage {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    /* background-color: blue; */
+}
+
+.productspage_light {
+    background-color: white;
+}
+
+.productspage_dark {
+    background-color: black;
+}
+
+.wrapper {
+    margin: 3rem;
+    display: grid;
+
+    /* o repeat() cria quantas colunas forem preciso */
+    /* o auto-fit tenta ocupar a linha com as clunas disponíveis no momento (cada card) até o tamanho da tela. 
+       Se os elementos não couberem numa mesma linha, ele quebra a linha */
+    /* o minmax define a width mínimo e máximo de cada coluna (card) */
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 13rem));
+    /* o gap é a distância entre as colunas (cards) */
+    gap: 1rem;
+    justify-content: center;
+}
+
+@media screen and (max-width: 530px) {
+    .wrapper {
+        display: block;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+}

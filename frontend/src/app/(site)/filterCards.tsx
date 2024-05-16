@@ -1,12 +1,13 @@
 'use client'
 
+import Card from '@/components/site/cards/cards'
 import { productType } from '@/types/product'
 
 interface FilterCardsProps {
   products?: productType[] | null
   filterCat?: string
   filterName?: string
-  renderCards?: (product: productType, index: number) => void
+  // renderCards?: (product: productType, index: number) => void
 }
 
 export default function FilterCards(props: FilterCardsProps) {
@@ -16,9 +17,9 @@ export default function FilterCards(props: FilterCardsProps) {
       {props.filterName === '' && props.filterCat === '0'
         ? props.products
             ?.sort((a, b) => (a.name > b.name ? 1 : -1))
-            .map((product: productType, index: number) =>
-              props.renderCards?.(product, index),
-            )
+            .map((product: productType, index: number) => (
+              <Card product={product} key={index} />
+            ))
         : props.filterCat === '0' // essa indica que o da categoria não foi usado, mas o do nome sim
           ? props.products
               ?.filter((product) =>
@@ -27,9 +28,9 @@ export default function FilterCards(props: FilterCardsProps) {
                   .includes(props.filterName!.toLowerCase()),
               )
               .sort((a, b) => (a.name > b.name ? 1 : -1))
-              .map((product: productType, index: number) =>
-                props.renderCards?.(product, index),
-              )
+              .map((product: productType, index: number) => (
+                <Card product={product} key={index} />
+              ))
           : props.products // essa ultima indica que os dois filtros foram usados, ou apenas o de categoria
               ?.filter(
                 (product) =>
@@ -39,9 +40,9 @@ export default function FilterCards(props: FilterCardsProps) {
                     .includes(props.filterName!.toLowerCase()),
               )
               .sort((a, b) => (a.name > b.name ? 1 : -1))
-              .map((product: productType, index: number) =>
-                props.renderCards?.(product, index),
-              )}
+              .map((product: productType, index: number) => (
+                <Card product={product} key={index} />
+              ))}
     </>
   )
 }

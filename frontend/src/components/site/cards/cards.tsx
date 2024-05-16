@@ -44,12 +44,15 @@ export default function Card({ product }: ProductProps) {
         alt="Imagem do produto"
       /> */}
       <div className={style.card_body}>
-        <h2 className={style.card_name}>{product.name}</h2>
-        <p className={style.card_price}>R$ {product.price}</p>
-        <p className={style.card_amount}>Estoque: {amount} un</p>
-        <p className={style.card_categoryName}>
-          Categoria: {product.category.name}
-        </p>
+        <div className={style.card_text}>
+          <h2 className={style.card_name}>{product.name}</h2>
+          <p className={style.card_price}>R$ {product.price}</p>
+          <p className={style.card_amount}>Estoque: {amount} un</p>
+          <p className={style.card_categoryName}>
+            Categoria: {product.category.name}
+          </p>
+        </div>
+
         {/* <button>Ver produto</button> */}
         <div className={style.card_buyProduct}>
           {amount > 0 ? (

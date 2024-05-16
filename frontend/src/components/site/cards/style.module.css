@@ -48,6 +48,12 @@
     font-size: medium;
 }
 
+.card_text {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
 .card_name {
     align-self: center;
     /* background-color: rgb(231, 252, 139); */
@@ -81,7 +87,7 @@
 
 .card_buyProduct {
     display: flex;
-    flex-grow: 1;
+
     /* align-self: center; */
     /* height: ; */
     /* background-color: rgb(160, 139, 252); */

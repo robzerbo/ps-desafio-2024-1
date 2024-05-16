@@ -1,21 +1,22 @@
 'use client' // definindo que ele vai ser usado no lado do cliente
 
-import Card from '@/components/site/cards/cards'
+// import Card from '@/components/site/cards/cards'
 import Navbar from '@/components/site/navbar/navbar'
+import Container from '@/components/site/container/container'
 import { api } from '@/services/api'
 import { productType } from '@/types/product'
-import { useContext, useEffect, useState } from 'react'
-import style from '@/app/(site)/style.module.css'
+import { useEffect, useState } from 'react'
+// import style from '@/app/(site)/style.module.css'
 import FilterCards from './filterCards'
 import Footer from '@/components/site/footer/footer'
-import ThemeContextProvider, { ThemeContext } from './theme-context'
+import ThemeContextProvider from './theme-context'
 
 export default function Home() {
   // setProducts é a função para pegar jogadores
   const [products, setProducts] = useState<productType[] | null>()
   const [filterCategory, setFilterCategory] = useState<string>('0')
   const [filterName, setFilterName] = useState<string>('')
-  const { theme } = useContext(ThemeContext)
+  // const { theme } = useContext(ThemeContext)
 
   const requestData = async () => {
     try {
@@ -46,9 +47,9 @@ export default function Home() {
 
   // criei uma função para renderizar os cards, pois na solução com filtro que encontrei (filterCards.tsx),
   // acabo usando o mesmo trecho de código 3 vezes, ai pra simplificar isso, deixei funcional
-  function renderCards(product: productType, index: number) {
-    return <Card product={product} key={index} />
-  }
+  // function renderCards(product: productType, index: number) {
+
+  // }
 
   // quando o código rodar, ele vai chamar a função de requisição de produtos
   useEffect(() => {
@@ -64,21 +65,17 @@ export default function Home() {
           funcFilterName={filterByName}
           funcFilterReset={filterReset}
         />
-        <div
-          className={`${style.productspage} + ${theme === 'light' ? style.productspage_light : style.productspage_dark}`}
-        >
+        {/* a explicação da criação do container esta no arquivo do mesmo */}
+        <Container>
           {/* 'FilterCards' é uma tag criada para lidar com a parte lógica de filtrar os cards */}
           {/* criei ela para deixar esse arquivo mais simplificado */}
-          <div className={style.wrapper}>
-            <FilterCards
-              products={products}
-              filterCat={filterCategory}
-              filterName={filterName}
-              renderCards={renderCards}
-            />
-          </div>
-        </div>
-
+          <FilterCards
+            products={products}
+            filterCat={filterCategory}
+            filterName={filterName}
+            // renderCards={renderCards}
+          />
+        </Container>
         <Footer />
       </ThemeContextProvider>
     </>
