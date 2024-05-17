@@ -54,16 +54,16 @@ export default function Card({ product, reloadData }: ProductProps) {
           <h2 className={style.card_name}>{product.name}</h2>
 
           <p className={style.card_price}>
-            <p className={style.card_price_discount}>
+            <span className={style.card_price_discount}>
               De <s>R$ {product.price + 50}</s>
-            </p>
+            </span>
             Por R$ {product.price}
-            <p
+            <span
               className={`${style.card_price_discount} + ${style.card_price_discount_color}`}
             >
               ({((product.price * 100) / (product.price + 50)).toFixed(0)}% de
               desconto!)
-            </p>
+            </span>
           </p>
           <p className={style.card_amount}>Estoque: {product.amount} un</p>
           <p className={style.card_categoryName}>

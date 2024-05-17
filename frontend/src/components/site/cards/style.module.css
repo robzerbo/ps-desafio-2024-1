@@ -76,6 +76,8 @@
     font-size: larger;
     line-height: 1rem;
     margin: 5px 0px 5px 0px;
+    display: flex;
+    flex-direction: column;
 }
 
 .card_price_discount {
