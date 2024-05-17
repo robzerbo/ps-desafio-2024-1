@@ -64,7 +64,7 @@
     /* background-color: rgb(231, 252, 139); */
     font-size: large;
     /* padding: 0px 3px 0px 3px; */
-    margin: 0px 0px 2px 0px;
+    margin: 0px 0px 5px 0px;
     /* padding-left: 3px;
     padding-right: 3px; */
     border-bottom: solid 2px;
@@ -72,14 +72,25 @@
     border-bottom-right-radius: 5px;
 }
 
+.card_price {
+    font-size: larger;
+    line-height: 1rem;
+    margin: 5px 0px 5px 0px;
+}
+
+.card_price_discount {
+    font-size: small;
+    line-height: 0.8rem;
+}
+
+.card_price_discount_color {
+    color: rgb(73, 199, 0);
+}
+
 .card_buyProduct {
     display: flex;
-
-    /* align-self: center; */
-    /* height: ; */
-    /* background-color: rgb(160, 139, 252); */
-    display: flex;
-    /* align-items: flex-end; */
+    align-items: center;
+    justify-content: center;
     width: 100%;
 
     border-radius: 0px 0px 5px 5px;
@@ -91,7 +102,7 @@
     background-color: rgb(94, 255, 0);
     padding: 2px;
     /* margin: 1px; */
-    width: inherit;
+    width: 100%;
     /* border-radius: 5px; */
 
     border-radius: inherit;
@@ -106,7 +117,8 @@
 }
 
 .card_buyProduct button:active {
-    transform: translateY(4px);
+    width: 95%;
+    height: 90%;
 }
 
 .card_buyProduct p {
@@ -162,6 +174,12 @@
     .card_buyProduct button {
         border-radius: inherit;
         margin: 5px;
+
+    }
+
+    .card_buyProduct button:active {
+        width: 90%;
+        height: 70%;
     }
 
     .card_buyProduct p {
