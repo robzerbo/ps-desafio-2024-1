@@ -4,6 +4,8 @@ import { api } from '@/services/api'
 import { categoryType } from '@/types/category'
 
 import { useContext, useEffect, useRef, useState } from 'react'
+import { PiEraserFill } from 'react-icons/pi'
+import { MdOutlineLightMode, MdOutlineDarkMode } from 'react-icons/md'
 
 import style from './style.module.css'
 import { getSession } from 'next-auth/react'
@@ -104,11 +106,13 @@ export default function Navbar(props: FilterProps) {
             className={`${style.button} + ${theme === 'light' ? style.nav_center_itens_light : style.nav_center_itens_dark}`}
             onClick={reset}
           >
-            Limpar
+            <PiEraserFill />
           </button>
           {/* </div> */}
         </div>
-        <div className={style.nav_right}>
+        <div
+          className={`${style.nav_right} + ${theme === 'light' ? style.nav_right_light : style.nav_right_dark}`}
+        >
           <ul className={style.nav_list}>
             <li className={style.nav_list_item}>
               <a href="#">Sobre o site</a>
@@ -118,7 +122,11 @@ export default function Navbar(props: FilterProps) {
                 className={style.nav_list_item}
                 onClick={() => toggleTheme()}
               >
-                {theme === 'light' ? 'Dark ' : 'Light '}Mode
+                {theme === 'light' ? (
+                  <MdOutlineDarkMode />
+                ) : (
+                  <MdOutlineLightMode />
+                )}
               </button>
             </li>
             <li className={style.nav_list_item}>

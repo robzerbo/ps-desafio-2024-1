@@ -1,6 +1,5 @@
 'use client'
 
-// import { api } from '@/services/api'
 import { productType } from '@/types/product'
 import style from './style.module.css'
 import Image from 'next/image'
@@ -27,12 +26,6 @@ export default function Card({ product, reloadData }: ProductProps) {
     }
   }
 
-  // useEffect(() => {
-  //   console.log('Valor antigo: ' + amount)
-  //   setAmount(product.amount)
-  //   console.log('Valor novo: ' + amount)
-  // })
-
   return (
     <div
       className={`${style.card} + ${theme === 'light' ? style.card_light : style.card_dark}`}
@@ -44,11 +37,6 @@ export default function Card({ product, reloadData }: ProductProps) {
         width={100}
         height={100}
       />
-      {/* <img
-        className={style.card_img}
-        src={product.image}
-        alt="Imagem do produto"
-      /> */}
       <div className={style.card_body}>
         <div className={style.card_text}>
           <h2 className={style.card_name}>{product.name}</h2>

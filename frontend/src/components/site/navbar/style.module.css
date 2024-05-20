@@ -1,28 +1,24 @@
 .nav_bar {
-    /* background-color: rgba(0, 0, 156, 0.452); */
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 70px;
-
     flex-wrap: wrap;
+
+    font-family: 'Lucida Sans';
 }
 
 .nav_bar_light {
-    background-color: #eee;
-    color: #333;
+    background-color: rgb(209, 0, 0);
+    color: rgb(0, 0, 0);
 }
 
 .nav_bar_dark {
-    background-color: #333;
-    color: #eee;
+    background-color: rgb(94, 0, 0);
+    color: rgb(255, 255, 255);
 }
 
 /* LOGO  */
-
-.nav_left {
-    /* min-width: fit-content; */
-}
 
 .nav_left img {
     height: 70px;
@@ -34,7 +30,6 @@
 .nav_center {
     display: flex;
     align-items: center;
-    /* background-color: black; */
     height: fit-content;
     min-width: fit-content;
     width: 40%;
@@ -44,7 +39,7 @@
     height: 35px;
     min-width: fit-content;
     width: 27%;
-    align-items: center;
+    /* align-items: center; */
 
     cursor: pointer;
     outline: none;
@@ -71,6 +66,9 @@
     height: 35px;
     min-width: fit-content;
     width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     padding: 5px;
     border-left: dashed 1px rgb(209, 209, 209);
@@ -79,22 +77,22 @@
 }
 
 .nav_center_itens_light {
-    background-color: #333;
-    color: #eee;
+    background-color: rgb(43, 43, 43);
+    color: rgb(255, 255, 255);
 }
 
 .nav_center_itens_light:focus:not(button) {
-    background-color: rgb(95, 95, 95);
+    background-color: rgb(78, 78, 78);
     transition: 0.5s;
 }
 
 .nav_center_itens_light:hover {
-    background-color: rgb(95, 95, 95);
+    background-color: rgb(78, 78, 78);
     transition: .5s;
 }
 
 .nav_center_itens_dark {
-    background-color: #eee;
+    background-color: rgb(255, 255, 255);
     color: #333;
 }
 
@@ -120,6 +118,7 @@
 
 .nav_list {
     display: flex;
+    align-items: center;
     height: 100%;
 }
 
@@ -174,10 +173,15 @@
         width: 100%;
         display: flex;
         justify-content: center;
-
-        background-color: rgba(0, 0, 156, 0.205);
     }
 
+    .nav_right_light {
+        background-color: rgb(170, 0, 0);
+    }
+
+    .nav_right_dark {
+        background-color: rgb(71, 0, 0);
+    }
 }
 
 /* tablet e mobile */

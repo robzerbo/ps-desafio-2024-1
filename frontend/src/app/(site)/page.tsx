@@ -7,16 +7,16 @@ import { api } from '@/services/api'
 import { productType } from '@/types/product'
 import { useEffect, useState } from 'react'
 // import style from '@/app/(site)/style.module.css'
-import FilterCards from './filterCards'
+
 import Footer from '@/components/site/footer/footer'
 import ThemeContextProvider from './theme-context'
+import Card from '@/components/site/cards/cards'
 
 export default function Home() {
   // setProducts é a função para pegar jogadores
   const [products, setProducts] = useState<productType[] | null>()
   const [filterCategory, setFilterCategory] = useState<string>('0')
   const [filterName, setFilterName] = useState<string>('')
-  // const { theme } = useContext(ThemeContext)
 
   const requestData = async () => {
     try {
@@ -45,18 +45,35 @@ export default function Home() {
     setFilterCategory('0')
   }
 
-  // criei uma função para renderizar os cards, pois na solução com filtro que encontrei (filterCards.tsx),
-  // acabo usando o mesmo trecho de código 3 vezes, ai pra simplificar isso, deixei funcional
-  // function renderCards(product: productType, index: number) {
-
-  // }
-
   // essa função tem como objetivo recarregar os produtos da página toda vez que algum for comprado.
   // ela existe pois tive problemas para criar um useState que armazenasse a quantidade e que funcionasse juntamente com o filtro
   // o problema é que toda vez q eu filtrava um produto, ele usava a variavel useState da quantidade de outro produto.
   // este outro produto é o que ficava na posição que o produto filtrado passou a ocupar no momento.
   function reloadData() {
     requestData()
+  }
+
+  // função responsável por filtrar os produtos, ela é utilizada no container principal e no slider
+  function filterProduct() {
+    let cardsFiltred = products
+
+    if (filterCategory === '0' && filterName !== '') {
+      cardsFiltred = products?.filter((product) =>
+        product.name.toLowerCase().includes(filterName!.toLowerCase()),
+      )
+    } else if (filterCategory !== '0') {
+      cardsFiltred = products?.filter(
+        (product) =>
+          product.category_id === filterCategory &&
+          product.name.toLowerCase().includes(filterName!.toLowerCase()),
+      )
+    }
+
+    return cardsFiltred
+      ?.sort((a, b) => (a.name > b.name ? 1 : -1))
+      .map((product: productType, index: number) => (
+        <Card product={product} key={index} reloadData={reloadData} />
+      ))
   }
 
   // quando o código rodar, ele vai chamar a função de requisição de produtos
@@ -77,13 +94,7 @@ export default function Home() {
         <Container>
           {/* 'FilterCards' é uma tag criada para lidar com a parte lógica de filtrar os cards */}
           {/* criei ela para deixar esse arquivo mais simplificado */}
-          <FilterCards
-            products={products}
-            filterCat={filterCategory}
-            filterName={filterName}
-            // renderCards={renderCards}
-            reloadData={reloadData}
-          />
+          {filterProduct()}
         </Container>
         <Footer />
       </ThemeContextProvider>
