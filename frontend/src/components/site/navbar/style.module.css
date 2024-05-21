@@ -6,6 +6,7 @@
     flex-wrap: wrap;
 
     font-family: 'Gill Sans';
+    font-size: larger;
 
     transition: .5s;
 }
