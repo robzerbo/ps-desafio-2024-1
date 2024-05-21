@@ -6,6 +6,9 @@ import { categoryType } from '@/types/category'
 import { useContext, useEffect, useRef, useState } from 'react'
 import { PiEraserFill } from 'react-icons/pi'
 import { MdOutlineLightMode, MdOutlineDarkMode } from 'react-icons/md'
+import { CgProfile } from 'react-icons/cg'
+import { IoInformationCircleOutline } from 'react-icons/io5'
+import { RiLoginCircleLine } from 'react-icons/ri'
 
 import style from './style.module.css'
 import { getSession } from 'next-auth/react'
@@ -60,11 +63,8 @@ export default function Navbar(props: FilterProps) {
         ${theme === 'light' ? style.nav_bar_light : style.nav_bar_dark}`}
       >
         <div className={style.nav_left}>
-          <a href="#">
-            <img
-              src="http://localhost:8000/storage/products//RmW5QXw2L1SSS61sxTUX6TWJuT4Lel9Mq71AY9tz.jpg"
-              alt=""
-            />
+          <a href="/">
+            <img src="/logo.png" alt="" />
           </a>
         </div>
         {/* isso é extra */}
@@ -114,12 +114,25 @@ export default function Navbar(props: FilterProps) {
           className={`${style.nav_right} + ${theme === 'light' ? style.nav_right_light : style.nav_right_dark}`}
         >
           <ul className={style.nav_list}>
-            <li className={style.nav_list_item}>
-              <a href="#">Sobre o site</a>
+            <li className={style.tooltip}>
+              <a
+                href="#"
+                className={`${style.nav_list_item} + ${theme === 'light' ? style.nav_list_item_light : style.nav_list_item_dark}`}
+              >
+                <IoInformationCircleOutline />
+              </a>
+              <span
+                className={`${style.tooltip_text} + ${theme === 'light' ? style.tooltip_text_light : style.tooltip_text_dark}`}
+              >
+                O site ainda está em desenvolvimento, por favor espere versões
+                mais estáveis
+              </span>
             </li>
-            <li className={style.nav_list_item}>
+
+            <li>
               <button
-                className={style.nav_list_item}
+                className={`${style.nav_list_item} + ${theme === 'light' ? style.nav_list_item_light : style.nav_list_item_dark}`}
+                // className={style.nav_list_item}
                 onClick={() => toggleTheme()}
               >
                 {theme === 'light' ? (
@@ -129,8 +142,13 @@ export default function Navbar(props: FilterProps) {
                 )}
               </button>
             </li>
-            <li className={style.nav_list_item}>
-              <a href="/admin">{isAuth ? 'Logado' : 'Sign-in'}</a>
+            <li>
+              <a
+                href="/admin"
+                className={`${style.nav_list_item} + ${theme === 'light' ? style.nav_list_item_light : style.nav_list_item_dark}`}
+              >
+                {isAuth ? <CgProfile /> : <RiLoginCircleLine />}
+              </a>
             </li>
           </ul>
         </div>

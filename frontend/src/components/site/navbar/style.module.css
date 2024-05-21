@@ -6,6 +6,8 @@
     flex-wrap: wrap;
 
     font-family: 'Lucida Sans';
+
+    transition: .5s;
 }
 
 .nav_bar_light {
@@ -79,6 +81,7 @@
 .nav_center_itens_light {
     background-color: rgb(43, 43, 43);
     color: rgb(255, 255, 255);
+    transition: .5s;
 }
 
 .nav_center_itens_light:focus:not(button) {
@@ -94,6 +97,7 @@
 .nav_center_itens_dark {
     background-color: rgb(255, 255, 255);
     color: #333;
+    transition: .5s;
 }
 
 .nav_center_itens_dark:focus:not(button) {
@@ -108,45 +112,106 @@
 
 /* SOBRE O SITE, DARKMODE E LOGIN */
 .nav_right {
-    height: 100%;
     min-width: fit-content;
 
-    margin: 0px;
-    border: 0px;
     padding: 0px 5px 0px 5px;
 }
 
 .nav_list {
     display: flex;
     align-items: center;
-    height: 100%;
+}
+
+.tooltip {
+    position: relative;
+}
+
+.tooltip_text::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    right: 50%;
+    margin-right: -7px;
+    border-width: 7px;
+    border-style: solid;
+
+}
+
+.tooltip_text_light::before {
+    border-color: transparent transparent rgb(0, 0, 0) transparent;
+}
+
+.tooltip_text_dark::before {
+    border-color: transparent transparent rgb(255, 255, 255) transparent;
+}
+
+.tooltip_text {
+    width: 10rem;
+    position: absolute;
+    top: 130%;
+    right: 50%;
+    margin-right: -80px;
+    visibility: hidden;
+
+    border: solid 1px;
+    border-radius: 5px;
+    font-size: small;
+    padding: 5px;
+}
+
+.tooltip_text_light {
+    background-color: rgb(0, 0, 0);
+    border-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+.tooltip_text_dark {
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+.tooltip:hover .tooltip_text {
+    visibility: visible;
+    opacity: .9;
+    transition: .5s;
 }
 
 .nav_list_item {
-    height: 100%;
+    height: fit-content;
     display: flex;
-    align-items: center;
 
-    margin: 0px;
-}
+    margin: 3px;
+    padding: 12px;
 
-.nav_list_item button {
-    height: 100%;
+    border-radius: 50%;
+    transition: 0.5s;
+    border: solid .5px transparent;
 
-    padding: 5px 15px 5px 15px;
-}
-
-.nav_list_item a {
-    padding: 5px 15px 5px 15px;
 }
 
 .nav_list_item:hover {
+    transform: scale(1.2);
+    /* color: white;
+    background-color: red;
+    box-shadow: 0px 0px 10px white;
+    border-color: white; */
 
-    cursor: pointer;
+    transition: 0.5s;
+}
 
-    border-radius: 40px;
-    background-color: rgb(170, 170, 170);
-    transition: .5s;
+.nav_list_item_light:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(146, 0, 0);
+    box-shadow: 0px 0px 10px white;
+    border-color: rgb(255, 255, 255)e;
+}
+
+.nav_list_item_dark:hover {
+    color: rgb(0, 0, 0);
+    background-color: rgb(128, 0, 0);
+    box-shadow: 0px 0px 10px rgb(0, 0, 0);
+    border-color: rgb(0, 0, 0);
 }
 
 /* telas pequenas e laptops */
@@ -181,6 +246,11 @@
 
     .nav_right_dark {
         background-color: rgb(71, 0, 0);
+    }
+
+    .nav_list_item {
+        padding: 5px;
+        margin: 5px;
     }
 }
 
@@ -229,11 +299,4 @@
         padding-right: 0px;
     }
 
-    .nav_list_item button {
-        padding: 5px 10px 5px 10px;
-    }
-
-    .nav_list_item a {
-        padding: 5px 10px 5px 10px;
-    }
 }
