@@ -3,6 +3,8 @@
 import { api } from '@/services/api'
 import { categoryType } from '@/types/category'
 
+import Image from 'next/image'
+
 import { useContext, useEffect, useRef, useState } from 'react'
 import { PiEraserFill } from 'react-icons/pi'
 import { MdOutlineLightMode, MdOutlineDarkMode } from 'react-icons/md'
@@ -64,7 +66,13 @@ export default function Navbar(props: FilterProps) {
       >
         <div className={style.nav_left}>
           <a href="/">
-            <img src="/logo.png" alt="" />
+            <Image
+              src={`${theme === 'light' ? '/logo_light.png' : '/logo_dark.png'}`}
+              alt="Logo do site"
+              width={200}
+              height={70}
+            />
+            {/* <img src="/logo.png" alt="" /> */}
           </a>
         </div>
         {/* isso é extra */}
@@ -124,7 +132,7 @@ export default function Navbar(props: FilterProps) {
               <span
                 className={`${style.tooltip_text} + ${theme === 'light' ? style.tooltip_text_light : style.tooltip_text_dark}`}
               >
-                O site ainda está em desenvolvimento, por favor espere versões
+                O site ainda está em desenvolvimento, por favor, espere versões
                 mais estáveis
               </span>
             </li>
