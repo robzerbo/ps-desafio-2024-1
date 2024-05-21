@@ -59,11 +59,11 @@ class ProductController extends Controller
 
         if ($request->hasFile('image')) {
             try { // vai tentar apagar a imagem atual que está guardada
-                $image_name = explode('product/', $product->image);
+                $image_name = explode('products/', $product->image);
                 Storage::disk('public')->delete('products/'.$image_name[1]);
             } catch (Throwable) {
             } finally { // salva a nova imagem
-                $path = $request->file('image')->store('products/', 'public');
+                $path = $request->file('image')->store('products', 'public');
                 $data['image'] = url('storage/'.$path);
             }
         }
