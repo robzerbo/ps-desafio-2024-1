@@ -64,8 +64,10 @@ export default function Card({ product, reloadData }: ProductProps) {
             Categoria: {product.category.name}
           </p>
         </div>
-
-        <button onClick={() => router.push(`/product/${product.id}`)}>
+        <button
+          className={style.productInfo}
+          onClick={() => router.push(`/product/${product.id}`)}
+        >
           Ver produto
         </button>
         <div className={style.card_buyProduct}>
