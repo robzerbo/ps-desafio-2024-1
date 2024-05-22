@@ -37,22 +37,13 @@
     flex-grow: 1;
     width: 100%;
     min-height: fit-content;
-    position: relative;
 
-    font-size: medium;
-}
-
-/* pseudo elemento */
-.card_body::after {
-    content: '';
-    position: absolute;
-    /* é a distância do parente (card_body) */
-    inset: 0;
     background-image: url('/vault_boy.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.05;
+
+    font-size: medium;
 }
 
 .card_text {
