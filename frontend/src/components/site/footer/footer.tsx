@@ -17,6 +17,10 @@ export default function Footer() {
         >
           <h1>Lojão do 20</h1>
           <p>Tudo com 20% de desconto!</p>
+          <p>
+            Corra para não perder as ofertas! Chame seus pais, tios(as), avós,
+            cachorros, gatos, papagaios e quem puder!!
+          </p>
           <div className={style.footer_social_media}>
             <a
               target="_blank"
@@ -27,7 +31,7 @@ export default function Footer() {
             </a>
             <a
               target="_blank"
-              href="https://l.instagram.com/"
+              href="https://web.whatsapp.com/"
               className={style.social_media_link}
             >
               <FaWhatsapp />

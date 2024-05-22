@@ -25,18 +25,20 @@
 }
 
 .footer_contacts {
+    max-width: max(30%, 300px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    padding: 5px;
+    padding: 10px;
+    text-align: center;
 }
 
 .sponsors {
     text-align: center;
 
-    padding: 5px;
+    padding: 10px;
 }
 
 .sponsors h1 {
