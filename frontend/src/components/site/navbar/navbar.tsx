@@ -124,7 +124,7 @@ export default function Navbar(props: FilterProps) {
           <ul className={style.nav_list}>
             <li className={style.tooltip}>
               <a
-                href="#"
+                href="/aboutus"
                 className={`${style.nav_list_item} + ${theme === 'light' ? style.nav_list_item_light : style.nav_list_item_dark}`}
               >
                 <IoInformationCircleOutline />
