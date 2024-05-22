@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { descreaceAmProduct } from '@/actions/product'
 import { useContext } from 'react'
 import { ThemeContext } from '@/app/(site)/theme-context'
+import { useRouter } from 'next/navigation'
 
 // essa interface indica que os parâmetros do componente são do tipo productType
 interface ProductProps {
@@ -16,6 +17,7 @@ interface ProductProps {
 // o card recebe um product e mostra as informações dele
 export default function Card({ product, reloadData }: ProductProps) {
   const { theme } = useContext(ThemeContext)
+  const router = useRouter()
 
   const sellProduct = async () => {
     try {
@@ -63,7 +65,9 @@ export default function Card({ product, reloadData }: ProductProps) {
           </p>
         </div>
 
-        {/* <button>Ver produto</button> */}
+        <button onClick={() => router.push(`/product/${product.id}`)}>
+          Ver produto
+        </button>
         <div className={style.card_buyProduct}>
           {product.amount > 0 ? (
             <button onClick={sellProduct}>Comprar</button>
