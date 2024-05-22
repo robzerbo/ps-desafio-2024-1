@@ -5,7 +5,7 @@ import { categoryType } from '@/types/category'
 
 import Image from 'next/image'
 
-import { useContext, useEffect, useRef, useState } from 'react'
+import { ComponentProps, useContext, useEffect, useRef, useState } from 'react'
 import { PiEraserFill } from 'react-icons/pi'
 import { MdOutlineLightMode, MdOutlineDarkMode } from 'react-icons/md'
 import { CgProfile } from 'react-icons/cg'
@@ -22,21 +22,11 @@ interface FilterProps {
   funcFilterReset?: () => void | undefined
 }
 
-export default function Navbar(props: FilterProps) {
-  const [isAuth, setIsAuth] = useState<boolean>()
+export function Filter(props: FilterProps) {
   const [categories, setCategories] = useState<categoryType[] | null>()
   const inputNameRef = useRef<HTMLInputElement>(null)
   const inputCatRef = useRef<HTMLSelectElement>(null)
-  const { theme, toggleTheme } = useContext(ThemeContext)
-
-  const requestSession = async () => {
-    try {
-      const sessionResponse = await getSession()
-      setIsAuth(!!sessionResponse?.user)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  const { theme } = useContext(ThemeContext)
 
   const requestCategories = async () => {
     try {
@@ -48,7 +38,6 @@ export default function Navbar(props: FilterProps) {
   }
 
   useEffect(() => {
-    requestSession()
     requestCategories()
   }, [])
 
@@ -57,6 +46,71 @@ export default function Navbar(props: FilterProps) {
     inputNameRef.current!.value = ''
     inputCatRef.current!.value = '0'
   }
+
+  return (
+    <>
+      <div className={style.nav_center}>
+        {/* <div className={style.nav_filter}> */}
+        <select
+          className={`${style.select} + ${theme === 'light' ? style.nav_center_itens_light : style.nav_center_itens_dark}`}
+          ref={inputCatRef}
+          id="category"
+          name="category"
+          onChange={(evt) => props.funcFilterCat?.(evt.target.value)} // passa a referencia da função de volta para o pai (page)
+        >
+          <option className={style.select_option} key={0} value={0}>
+            Todas as Categorias
+          </option>
+          {categories
+            ?.sort((a, b) => (a.name > b.name ? 1 : -1))
+            .map((category: categoryType, index: number) => (
+              <option
+                className={style.select_option}
+                key={index + 1}
+                value={category.id}
+              >
+                {category.name}
+              </option>
+            ))}
+        </select>
+        <input
+          className={`${style.input} + ${theme === 'light' ? style.nav_center_itens_light : style.nav_center_itens_dark}`}
+          ref={inputNameRef}
+          id="filterName"
+          type="text"
+          placeholder="Filtre pelo nome"
+          onChange={(evt) => props.funcFilterName?.(evt.target.value)} // passa a referencia da função de volta para o pai (page)
+        />
+        {/* botao para resetar os filtros */}
+        <button
+          id="resetFilter"
+          className={`${style.button} + ${theme === 'light' ? style.nav_center_itens_light : style.nav_center_itens_dark}`}
+          onClick={reset}
+        >
+          <PiEraserFill />
+        </button>
+        {/* </div> */}
+      </div>
+    </>
+  )
+}
+
+export default function Navbar({ children }: ComponentProps<'div'>) {
+  const [isAuth, setIsAuth] = useState<boolean>()
+  const { theme, toggleTheme } = useContext(ThemeContext)
+
+  const requestSession = async () => {
+    try {
+      const sessionResponse = await getSession()
+      setIsAuth(!!sessionResponse?.user)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    requestSession()
+  }, [])
 
   return (
     <>
@@ -76,48 +130,7 @@ export default function Navbar(props: FilterProps) {
           </a>
         </div>
         {/* isso é extra */}
-        <div className={style.nav_center}>
-          {/* <div className={style.nav_filter}> */}
-          <select
-            className={`${style.select} + ${theme === 'light' ? style.nav_center_itens_light : style.nav_center_itens_dark}`}
-            ref={inputCatRef}
-            id="category"
-            name="category"
-            onChange={(evt) => props.funcFilterCat?.(evt.target.value)} // passa a referencia da função de volta para o pai (page)
-          >
-            <option className={style.select_option} key={0} value={0}>
-              Todas as Categorias
-            </option>
-            {categories
-              ?.sort((a, b) => (a.name > b.name ? 1 : -1))
-              .map((category: categoryType, index: number) => (
-                <option
-                  className={style.select_option}
-                  key={index + 1}
-                  value={category.id}
-                >
-                  {category.name}
-                </option>
-              ))}
-          </select>
-          <input
-            className={`${style.input} + ${theme === 'light' ? style.nav_center_itens_light : style.nav_center_itens_dark}`}
-            ref={inputNameRef}
-            id="filterName"
-            type="text"
-            placeholder="Filtre pelo nome"
-            onChange={(evt) => props.funcFilterName?.(evt.target.value)} // passa a referencia da função de volta para o pai (page)
-          />
-          {/* botao para resetar os filtros */}
-          <button
-            id="resetFilter"
-            className={`${style.button} + ${theme === 'light' ? style.nav_center_itens_light : style.nav_center_itens_dark}`}
-            onClick={reset}
-          >
-            <PiEraserFill />
-          </button>
-          {/* </div> */}
-        </div>
+        {children}
         <div
           className={`${style.nav_right} + ${theme === 'light' ? style.nav_right_light : style.nav_right_dark}`}
         >

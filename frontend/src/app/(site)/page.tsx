@@ -1,7 +1,7 @@
 'use client' // definindo que ele vai ser usado no lado do cliente
 
 // import Card from '@/components/site/cards/cards'
-import Navbar from '@/components/site/navbar/navbar'
+import Navbar, { Filter } from '@/components/site/navbar/navbar'
 import Container from '@/components/site/container/container'
 import { api } from '@/services/api'
 import { productType } from '@/types/product'
@@ -85,11 +85,13 @@ export default function Home() {
     <>
       {/* é passado uma referencia da função para o filho */}
       <ThemeContextProvider>
-        <Navbar
-          funcFilterCat={filterByCategory}
-          funcFilterName={filterByName}
-          funcFilterReset={filterReset}
-        />
+        <Navbar>
+          <Filter
+            funcFilterCat={filterByCategory}
+            funcFilterName={filterByName}
+            funcFilterReset={filterReset}
+          />
+        </Navbar>
         {/* a explicação da criação do container esta no arquivo do mesmo */}
         <Container>
           {/* 'FilterCards' é uma tag criada para lidar com a parte lógica de filtrar os cards */}
