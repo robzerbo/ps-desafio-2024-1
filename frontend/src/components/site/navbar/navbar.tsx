@@ -125,6 +125,7 @@ export default function Navbar({ children }: ComponentProps<'div'>) {
               alt="Logo do site"
               width={200}
               height={70}
+              priority={true}
             />
             {/* <img src="/logo.png" alt="" /> */}
           </a>

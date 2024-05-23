@@ -38,6 +38,7 @@ export default function Card({ product, reloadData }: ProductProps) {
         alt="Imagem do produto"
         width={100}
         height={100}
+        priority={true}
       />
       <div className={style.card_body}>
         <div className={style.card_text}>
@@ -65,12 +66,14 @@ export default function Card({ product, reloadData }: ProductProps) {
           </p>
         </div>
         <button
-          className={style.productInfo}
+          className={`${style.productInfo} + ${theme === 'light' ? style.productInfo_light : style.productInfo_dark}`}
           onClick={() => router.push(`/product/${product.id}`)}
         >
           Ver produto
         </button>
-        <div className={style.card_buyProduct}>
+        <div
+          className={`${style.card_buyProduct} + ${theme === 'light' ? style.card_buyProduct_light : style.card_buyProduct_dark}`}
+        >
           {product.amount > 0 ? (
             <button onClick={sellProduct}>Comprar</button>
           ) : (
