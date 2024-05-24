@@ -9,6 +9,8 @@ import Image from 'next/image'
 import style from './style.module.css'
 import { useRouter } from 'next/navigation'
 
+// página criada para exercitar os conceitos do next do cursinho da udemy
+
 export default function Aboutus() {
   const router = useRouter()
 

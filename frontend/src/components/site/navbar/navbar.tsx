@@ -4,8 +4,8 @@ import { api } from '@/services/api'
 import { categoryType } from '@/types/category'
 
 import Image from 'next/image'
-
 import { ComponentProps, useContext, useEffect, useRef, useState } from 'react'
+
 import { PiEraserFill } from 'react-icons/pi'
 import { MdOutlineLightMode, MdOutlineDarkMode } from 'react-icons/md'
 import { CgProfile } from 'react-icons/cg'
@@ -41,6 +41,8 @@ export function Filter(props: FilterProps) {
     requestCategories()
   }, [])
 
+  // olhando bem, eu uso duas funções de reset no filtro, uma para mudar a const useState e outra para mudar o elemento HTML diretamente.
+  // ambas funcionam de forma sincronizada
   function reset() {
     props.funcFilterReset!()
     inputNameRef.current!.value = ''
@@ -50,7 +52,6 @@ export function Filter(props: FilterProps) {
   return (
     <>
       <div className={style.nav_center}>
-        {/* <div className={style.nav_filter}> */}
         <select
           className={`${style.select} + ${theme === 'light' ? style.nav_center_itens_light : style.nav_center_itens_dark}`}
           ref={inputCatRef}
@@ -81,7 +82,6 @@ export function Filter(props: FilterProps) {
           placeholder="Filtre pelo nome"
           onChange={(evt) => props.funcFilterName?.(evt.target.value)} // passa a referencia da função de volta para o pai (page)
         />
-        {/* botao para resetar os filtros */}
         <button
           id="resetFilter"
           className={`${style.button} + ${theme === 'light' ? style.nav_center_itens_light : style.nav_center_itens_dark}`}
@@ -89,7 +89,6 @@ export function Filter(props: FilterProps) {
         >
           <PiEraserFill />
         </button>
-        {/* </div> */}
       </div>
     </>
   )
@@ -127,10 +126,8 @@ export default function Navbar({ children }: ComponentProps<'div'>) {
               height={70}
               priority={true}
             />
-            {/* <img src="/logo.png" alt="" /> */}
           </a>
         </div>
-        {/* isso é extra */}
         {children}
         <div
           className={`${style.nav_right} + ${theme === 'light' ? style.nav_right_light : style.nav_right_dark}`}
@@ -154,7 +151,6 @@ export default function Navbar({ children }: ComponentProps<'div'>) {
             <li>
               <button
                 className={`${style.nav_list_item} + ${theme === 'light' ? style.nav_list_item_light : style.nav_list_item_dark}`}
-                // className={style.nav_list_item}
                 onClick={() => toggleTheme()}
               >
                 {theme === 'light' ? (

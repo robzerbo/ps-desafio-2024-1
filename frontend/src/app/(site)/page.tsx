@@ -1,13 +1,11 @@
 'use client' // definindo que ele vai ser usado no lado do cliente
 
-// import Card from '@/components/site/cards/cards'
-import Navbar, { Filter } from '@/components/site/navbar/navbar'
-import Container from '@/components/site/container/container'
 import { api } from '@/services/api'
 import { productType } from '@/types/product'
 import { useEffect, useState } from 'react'
-// import style from '@/app/(site)/style.module.css'
 
+import Navbar, { Filter } from '@/components/site/navbar/navbar'
+import Container from '@/components/site/container/container'
 import Footer from '@/components/site/footer/footer'
 import ThemeContextProvider from './theme-context'
 import Card from '@/components/site/cards/cards'
@@ -53,7 +51,7 @@ export default function Home() {
     requestData()
   }
 
-  // função responsável por filtrar os produtos, ela é utilizada no container principal e no slider
+  // função responsável por filtrar os produtos, ela é utilizada no container principal
   function filterProduct() {
     let cardsFiltred = products
 
@@ -83,21 +81,17 @@ export default function Home() {
 
   return (
     <>
-      {/* é passado uma referencia da função para o filho */}
+      {/* O ThemeContextProvider é o elemento pai de todos os elementos da página para que ele possa mudar o tema */}
       <ThemeContextProvider>
         <Navbar>
+          {/* O filtro é um componente do navbar que é usado na página principal apenas */}
           <Filter
             funcFilterCat={filterByCategory}
             funcFilterName={filterByName}
             funcFilterReset={filterReset}
           />
         </Navbar>
-        {/* a explicação da criação do container esta no arquivo do mesmo */}
-        <Container>
-          {/* 'FilterCards' é uma tag criada para lidar com a parte lógica de filtrar os cards */}
-          {/* criei ela para deixar esse arquivo mais simplificado */}
-          {filterProduct()}
-        </Container>
+        <Container>{filterProduct()}</Container>
         <Footer />
       </ThemeContextProvider>
     </>
