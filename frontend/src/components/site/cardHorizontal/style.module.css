@@ -55,6 +55,10 @@
     padding: 1px;
 }
 
+.image img {
+    border-radius: 5px;
+}
+
 .body {
     grid-area: body;
 
@@ -165,9 +169,21 @@
     padding: 1rem;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 768px) {
+    .product {
+        width: max(80%, 320px);
+    }
+}
+
+@media screen and (max-width: 480px) {
     .content {
         font-size: initial;
+    }
+
+    .product {
+        width: max(100%, 320px);
+        margin-left: .2rem;
+        margin-right: .2rem;
     }
 
     .name {
