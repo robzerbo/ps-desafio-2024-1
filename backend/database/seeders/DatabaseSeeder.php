@@ -22,9 +22,9 @@ class DatabaseSeeder extends Seeder
         $user->assignPermission('admin');
 
         // fazendo o seed de categoria
-        // $this->call(CategorySeeder::class);
+        $this->call(CategorySeeder::class);
 
         //fazendo a chamada da função para semear
-        // $this->call(ProductSeeder::class);
+        $this->call(ProductSeeder::class);
     }
 }
